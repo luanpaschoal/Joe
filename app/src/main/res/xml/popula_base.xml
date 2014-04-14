@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabelas>
+    <ModoJogo tipo="Jogar" />
+	<ModoJogo tipo="Treinar" />
+
+    <Norma
+        observacao="As palavras com hífen sofreram o maior número de mudanças no acordo, dificultando a aprendizagem."
+        titulo="Hífen" />
+    <Norma
+        observacao="Perda da acentuação em alguns casos"
+        titulo="Acentuação" />
+
+    <Regra
+        descricao="Usa-se o hífen em palavras compostas por justaposição cujos elementos
+(substantivos, adjetivos, numerais ou verbos) constituam uma unidade sintagmática e semântica e com acento próprio,
+ainda que o primeiro elemento esteja reduzido."
+        dificuldade="fácil"
+        idNorma="1"
+        palavraChave="Justaposição" />
+    <Regra
+        descricao=""
+        dificuldade="difícil"
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="difícil"
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="fácil"
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="difícil"
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="fácil"
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="fácil"
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="difícil"
+        idNorma="2"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="fácil"
+        idNorma="2"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade="difícil"
+        idNorma="2"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+    <Regra
+        descricao=""
+        dificuldade=""
+        idNorma="1"
+        palavraChave="" />
+
+    <DicaRegra
+        idRegra="1"
+        texto="" />
+    <DicaRegra
+        idRegra="1"
+        texto="" />
+    <DicaRegra
+        idRegra="1"
+        texto="" />
+    <DicaRegra
+        idRegra="2"
+        texto="" />
+    <DicaRegra
+        idRegra="2"
+        texto="" />
+    <DicaRegra
+        idRegra="3"
+        texto="" />
+    <DicaRegra
+        idRegra="4"
+        texto="" />
+    <DicaRegra
+        idRegra="5"
+        texto="" />
+    <DicaRegra
+        idRegra="6"
+        texto="" />
+    <DicaRegra
+        idRegra="7"
+        texto="" />
+    <DicaRegra
+        idRegra="8"
+        texto="" />
+    <DicaRegra
+        idRegra="9"
+        texto="" />
+    <DicaRegra
+        idRegra="10"
+        texto="" />
+    <DicaRegra
+        idRegra="11"
+        texto="" />
+    <DicaRegra
+        idRegra="12"
+        texto="" />
+    <DicaRegra
+        idRegra="13"
+        texto="" />
+    <DicaRegra
+        idRegra="14"
+        texto="" />
+    <DicaRegra
+        idRegra="15"
+        texto="" />
+    <DicaRegra
+        idRegra="16"
+        texto="" />
+    <DicaRegra
+        idRegra="17"
+        texto="" />
+    <DicaRegra
+        idRegra="18"
+        texto="" />
+    <DicaRegra
+        idRegra="19"
+        texto="" />
+    <DicaRegra
+        idRegra="19"
+        texto="" />
+
+    <!--Em audio, coloque o nome do arquivo SEM a extensão ".mp3"-->
+    <Palavra
+        audio="nomeDoAudio"
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+    <Palavra
+        audio=""
+        dificuldade=""
+        idModoJogo=""
+        idRegra=""
+        nome=""
+        uso="" />
+</tabelas>

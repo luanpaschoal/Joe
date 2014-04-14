@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Jogo Ortográfico Educacional</string>
-    <string name="hello_world">Olá jovem!</string>
+    <string name="treinar">Treinar</string>
+    <string name="jogar">Jogar</string>
 
 </resources>

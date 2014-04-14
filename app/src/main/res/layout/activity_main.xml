@@ -1,12 +1,42 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/abc_action_bar_icon_vertical_padding"
+    android:showDividers="middle"
+    android:baselineAligned="false"
+    android:background="#ffffff"
+    android:gravity="center|top"
+    android:weightSum="1">
 
-    <TextView
-        android:text="@string/hello_world"
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal|top"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="40dp" />
 
-</RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jogar"
+        android:id="@+id/btnJogar"
+        android:background="#65b2ff"
+        android:clickable="true"
+        android:textSize="@dimen/abc_action_bar_title_text_size"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/treinar"
+        android:id="@+id/btnTreinar"
+        android:background="#2ae64c"
+        android:clickable="true"
+        android:textStyle="bold"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+</LinearLayout>
