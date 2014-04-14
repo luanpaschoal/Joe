@@ -1,4 +1,4 @@
-package br.rj.cefet.joe.app.negocio.entidade;
+package br.rj.cefet.joe.app.model.entidade;
 
 /**
  * Created by Luan on 05/04/2014.
@@ -22,6 +22,9 @@ public class Palavra {
         this.uso = uso;
         this.qtdVisualizacao = qtdVisualizacao;
         this.qtdErros = qtdErros;
+    }
+
+    public Palavra() {
     }
 
     public String getNome() {
