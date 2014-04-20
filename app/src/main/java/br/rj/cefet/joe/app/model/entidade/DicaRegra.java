@@ -3,16 +3,16 @@ package br.rj.cefet.joe.app.model.entidade;
 /**
  * Created by Luan on 05/04/2014.
  */
-public class Mensagem {
+public class DicaRegra {
     String texto;
-    String tipo;
 
-    public Mensagem() {
+    Regra regra = new Regra();
+
+    public DicaRegra() {
     }
 
-    public Mensagem(String texto, String tipo) {
+    public DicaRegra(String texto) {
         this.texto = texto;
-        this.tipo = tipo;
     }
 
     public String getTexto() {
@@ -23,11 +23,11 @@ public class Mensagem {
         this.texto = texto;
     }
 
-    public String getTipo() {
-        return tipo;
+    public Regra getRegra() {
+        return regra;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setRegra(Regra regra) {
+        this.regra = regra;
     }
 }

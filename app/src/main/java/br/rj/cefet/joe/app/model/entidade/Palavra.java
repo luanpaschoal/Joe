@@ -6,19 +6,16 @@ package br.rj.cefet.joe.app.model.entidade;
 public class Palavra {
     String nome;
     String audio;
-    String dificuldade;
     String uso;
     int qtdVisualizacao;
     int qtdErros;
 
     private ModoJogo modoJogo = new ModoJogo();
     private Regra regra = new Regra();
-    private Mensagem mensagem = new Mensagem();
 
     public Palavra(String nome, String audio, String dificuldade, String uso, int qtdVisualizacao, int qtdErros) {
         this.nome = nome;
         this.audio = audio;
-        this.dificuldade = dificuldade;
         this.uso = uso;
         this.qtdVisualizacao = qtdVisualizacao;
         this.qtdErros = qtdErros;
@@ -41,14 +38,6 @@ public class Palavra {
 
     public void setAudio(String audio) {
         this.audio = audio;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(String dificuldade) {
-        this.dificuldade = dificuldade;
     }
 
     public String getUso() {
@@ -89,13 +78,5 @@ public class Palavra {
 
     public void setRegra(Regra regra) {
         this.regra = regra;
-    }
-
-    public Mensagem getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(Mensagem mensagem) {
-        this.mensagem = mensagem;
     }
 }

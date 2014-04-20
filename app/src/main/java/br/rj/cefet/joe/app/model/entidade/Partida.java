@@ -3,6 +3,9 @@ package br.rj.cefet.joe.app.model.entidade;
 /**
  * Created by Luan on 05/04/2014.
  */
+
+//o registro de cada partida não entrará no banco, ficará no controller.
+//essa classe sera excluída.
 public class Partida {
     int tempoLimite = 120;
     int qtdPalavrasJogadas;
