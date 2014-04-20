@@ -89,16 +89,16 @@ public class CriaTabelas extends SQLiteOpenHelper {
 
     private void criaTabelaPalavra() {
         try {
-            db.execSQL("CREATE TABLE IF NOT EXISTS Palavra (_id INTEGER PRIMARY KEY, \n" +
+            db.execSQL("CREATE TABLE IF NOT EXISTS Palavra (" +
+                    "_id INTEGER PRIMARY KEY, \n" +
                     "nome TEXT NOT NULL, \n" +
-                    "caminhoAudio TEXT, \n" +
-                    "dificuldade TEXT,\n" +
+                    "audio TEXT, \n" +
                     "uso TEXT,\n" +
                     "qtdVisualizacao INTEGER,\n" +
                     "qtdErros INTEGER,\n" +
                     "idModoJogo INTEGER,\n" +
                     "idRegra INTEGER,\n" +
-                    "FOREIGN KEY(idModoJogo) REFERENCES ModoJogo(_id)),\n" +
+                    "FOREIGN KEY(idModoJogo) REFERENCES ModoJogo(_id),\n" +
                     "FOREIGN KEY(idRegra) REFERENCES Regra(_id));");
         } catch (Exception e) {
             Log.w("CriaTabelas", "Não foi possível criar a tabela Palavra. Erro:" + e.getMessage());

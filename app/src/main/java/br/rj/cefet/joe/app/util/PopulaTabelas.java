@@ -120,7 +120,6 @@ public class PopulaTabelas extends SQLiteOpenHelper {
     private void inserePalavra(XmlResourceParser _xml, SQLiteDatabase db) {
         String _nome = _xml.getAttributeValue(null, "nome");
         String _audio = _xml.getAttributeValue(null, "audio");
-        String _dificuldade = _xml.getAttributeValue(null, "dificuldade");
         String _uso = _xml.getAttributeValue(null, "uso");
         String _idModoJogo = _xml.getAttributeValue(null, "idModoJogo");
         String _idRegra = _xml.getAttributeValue(null, "idRegra");
@@ -128,7 +127,6 @@ public class PopulaTabelas extends SQLiteOpenHelper {
         ContentValues _Values = new ContentValues();
         _Values.put("nome", _nome);
         _Values.put("audio", _audio);
-        _Values.put("dificuldade", _dificuldade);
         _Values.put("uso", _uso);
         _Values.put("idModoJogo", _idModoJogo);
         _Values.put("idRegra", _idRegra);
