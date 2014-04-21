@@ -86,7 +86,7 @@ public class PopulaTabelas extends SQLiteOpenHelper {
 
         ContentValues _Values = new ContentValues();
         _Values.put("titulo", _titulo);
-        _Values.put("tempoTotal", _observacao);
+        _Values.put("observacao", _observacao);
 
         db.insert(Constantes.NORMA, null, _Values);
     }
@@ -137,9 +137,8 @@ public class PopulaTabelas extends SQLiteOpenHelper {
     /* Update database to latest version */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        CriaTabelas criaTabelas = new CriaTabelas(fContext);
-        criaTabelas.onUpgrade(db, oldVersion, newVersion);
-
+//        CriaTabelas criaTabelas = new CriaTabelas(fContext);
+//        criaTabelas.onUpgrade(db, oldVersion, newVersion);
         onCreate(db);
     }
 }

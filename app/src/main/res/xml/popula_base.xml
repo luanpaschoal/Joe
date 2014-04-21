@@ -18,319 +18,288 @@ ainda que o primeiro elemento esteja reduzido."
         idNorma="1"
         palavraChave="Justaposição" />
     <Regra
-        descricao=""
+        descricao="O hífen também é usado em topônimos compostos iniciados pelo adjetivo grão/grã, ou por verbo, ou ainda se houver artigo entre seus elementos constituintes."
         dificuldade="difícil"
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Topônimos" />
     <Regra
-        descricao=""
+        descricao="O hífen também deve ser usado em palavras compostas que designam espécies botânica e zoológica."
         dificuldade="difícil"
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Botânica e zoológica" />
     <Regra
-        descricao=""
+        descricao="Emprega-se hífen nos compostos formados pelos advérbios bem ou mal (1º elemento) e por qualquer palavra iniciada por vogal"
         dificuldade="fácil"
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Bem, mal e vogal" />
     <Regra
-        descricao=""
+        descricao="O hífen deve ser empregado nos compostos com os elementos além, aquém, recém e sem."
         dificuldade="difícil"
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Além, aquém, recém e sem" />
     <Regra
-        descricao=""
+        descricao="Nas locuções de qualquer tipo, não se usa o hífen."
         dificuldade="fácil"
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Locuções" />
     <Regra
-        descricao=""
+        descricao="Deve-se usar o hífen em encadeamentos vocabulares ocasionais ou nas combinações históricas."
         dificuldade="fácil"
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Ocasionais e históricas" />
     <Regra
-        descricao=""
+        descricao="Ditongos abertos 'éi' e 'ói' paroxítonos perdem o acento. OBS: Quando oxítonos estes, juntamento com 'éu' permanecem com o acento, seguidos ou não pelo 's'"
         dificuldade="difícil"
         idNorma="2"
-        palavraChave="" />
+        palavraChave="'éi' e 'ói'" />
     <Regra
-        descricao=""
+        descricao="No 'i' e 'u' paroxítonos, antecedidos de um ditongo. OBS: Se o 'i' ou 'u' forem oxítonos (seguidos ou não de 's'), permanece o acento."
         dificuldade="fácil"
         idNorma="2"
-        palavraChave="" />
+        palavraChave="'i' e 'u'" />
     <Regra
-        descricao=""
+        descricao="Deixa-se de usar o acento agudo para diferenciar alguns pares de paroxítonas homógrafas. "
         dificuldade="difícil"
         idNorma="2"
-        palavraChave="" />
+        palavraChave="Paroxítonas Homógrafas" />
     <Regra
-        descricao=""
+        descricao="Usa-se o hífen em palavras prefixais ou recompostas cujo 2º elemento é iniciado por 'h'"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="2º elemento 'h'" />
     <Regra
-        descricao=""
+        descricao="Usa-se o hífen se o 1º elemento termina com a mesma vogal que inicia o 2º elemento"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Elementos com mesma vogal" />
     <Regra
-        descricao=""
+        descricao="Usa-se o hífen se o prefixo for 'circum' ou 'pan' e o 2º elemento iniciar por vogal, 'h', 'm' ou 'n'"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="'circum' e 'pan'" />
     <Regra
-        descricao=""
+        descricao="Usa-se o hífen se o prefixo for 'hiper', 'inter' ou 'super' e o 2º elemento iniciar por 'r'"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="'hiper', 'inter' e 'super'" />
     <Regra
-        descricao=""
+        descricao="Usa-se o hífen se o prefixo for 'ex', 'sota', 'soto', 'vice' ou 'vizo'"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="'ex', 'sota', 'soto', 'vice' e 'vizo'" />
     <Regra
-        descricao=""
+        descricao="Usa-se o hífen se os orefixos 'pós', 'pré' e 'pró' forem tônicos e graficamente acentuados"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="'pós', 'pré' e 'pró'" />
     <Regra
-        descricao=""
+        descricao="Não usa-se o hífen se o prefixo/falso prefixo terminar em vogal e o 2º elemento iniciar por 'r' ou 's', devendo ser duplicadas."
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="vogal + 'r' ou 's'" />
     <Regra
-        descricao=""
+        descricao="Não usa-se o hífen se o prefixo/falso prefixo terminar em vogal e o 2º elemento iniciar por vogal diferente"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
+        palavraChave="Elementos com vogais diferentes" />
     <Regra
-        descricao=""
+        descricao="Usa-se o hífen em casos de ênclise e de mesóclise"
         dificuldade=""
         idNorma="1"
-        palavraChave="" />
-
-    <DicaRegra
-        idRegra="1"
-        texto="" />
-    <DicaRegra
-        idRegra="1"
-        texto="" />
-    <DicaRegra
-        idRegra="1"
-        texto="" />
-    <DicaRegra
-        idRegra="2"
-        texto="" />
-    <DicaRegra
-        idRegra="2"
-        texto="" />
-    <DicaRegra
-        idRegra="3"
-        texto="" />
-    <DicaRegra
-        idRegra="4"
-        texto="" />
-    <DicaRegra
-        idRegra="5"
-        texto="" />
-    <DicaRegra
-        idRegra="6"
-        texto="" />
-    <DicaRegra
-        idRegra="7"
-        texto="" />
-    <DicaRegra
-        idRegra="8"
-        texto="" />
-    <DicaRegra
-        idRegra="9"
-        texto="" />
-    <DicaRegra
-        idRegra="10"
-        texto="" />
-    <DicaRegra
-        idRegra="11"
-        texto="" />
-    <DicaRegra
-        idRegra="12"
-        texto="" />
-    <DicaRegra
-        idRegra="13"
-        texto="" />
-    <DicaRegra
-        idRegra="14"
-        texto="" />
-    <DicaRegra
-        idRegra="15"
-        texto="" />
-    <DicaRegra
-        idRegra="16"
-        texto="" />
-    <DicaRegra
-        idRegra="17"
-        texto="" />
-    <DicaRegra
-        idRegra="18"
-        texto="" />
-    <DicaRegra
-        idRegra="19"
-        texto="" />
-    <DicaRegra
-        idRegra="19"
-        texto="" />
+        palavraChave="Ênclise e mesóclise" />
 
     <!--Em audio, coloque o nome do arquivo SEM a extensão ".mp3"-->
+    
+	<Palavra
+        audio="segunda-feira - ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="segunda-feira"
+        uso="comum" />
     <Palavra
-        audio="nomeDoAudio"
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="azul-claro ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="azul-claro"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="guarda-chuva ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="guarda-chuva"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="arco-íris ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="arco-íris"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="conta-gotas ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="conta-gotas"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="tio-avô ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="tio-avô"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="norte-americano ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="norte-americano"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="sul-africano max"
+        idModoJogo="1"
+        idRegra="1"
+        nome="sul-africano"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="tenente-coronel max"
+        idModoJogo="1"
+        idRegra="1"
+        nome="tenente-coronel"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="fura-bolo max"
+        idModoJogo="1"
+        idRegra="1"
+        nome="fura-bolo"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="médico-cirurgião max"
+        idModoJogo="1"
+        idRegra="1"
+        nome="médico-cirurgião"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="cirurgião-dentista max"
+        idModoJogo="1"
+        idRegra="1"
+        nome="cirurgião-dentista"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="segundo-sargento max"
+        idModoJogo="1"
+        idRegra="1"
+        nome="segundo-sargento"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="primeiro-ministro max"
+        idModoJogo="1"
+        idRegra="1"
+        nome="primeiro-ministro"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="guarda-noturno ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="guarda-noturno"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="turma-piloto ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="turma-piloto"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="mato-grossense ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="mato-grossense"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="finca-pé ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="finca-pé"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="ano-luz ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="ano-luz"
+        uso="comum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="rainha-cláudia ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="rainha-cláudia"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="primo-infecção ana"
+        idModoJogo="2"
+        idRegra="1"
+        nome="primo-infecção"
+        uso="incomum" />
     <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
-    <Palavra
-        audio=""
-        dificuldade=""
-        idModoJogo=""
-        idRegra=""
-        nome=""
-        uso="" />
+        audio="Grã-Bretanha ana"
+        idModoJogo="2"
+        idRegra="2"
+        nome="Grã-Bretanha"
+        uso="comum" />
+	<Palavra
+        audio="Passa-Quatro ana"
+        idModoJogo="2"
+        idRegra="2"
+        nome="Passa-Quatro"
+        uso="comum" />
+	<Palavra
+        audio="Baía de Todos-os-Santos ana"
+        idModoJogo="2"
+        idRegra="2"
+        nome="Baía de Todos-os-Santos"
+        uso="comum" />
+	<Palavra
+        audio="Grão-Pará ana"
+        idModoJogo="2"
+        idRegra="2"
+        nome="Grão-Pará"
+        uso="incomum" />
+	<Palavra
+        audio="Quebra-Costas max"
+        idModoJogo="1"
+        idRegra="2"
+        nome="Quebra-Costas"
+        uso="incomum" />
+	<Palavra
+        audio="Entre-os-Rios max"
+        idModoJogo="1"
+        idRegra="2"
+        nome="Entre-os-Rios"
+        uso="incomum" />
+	<Palavra
+        audio="Traga-Mouros max"
+        idModoJogo="1"
+        idRegra="2"
+        nome="Traga-Mouros"
+        uso="incomum" />
+	<Palavra
+        audio="América do Sul max"
+        idModoJogo="1"
+        idRegra="2"
+        nome="América do Sul"
+        uso="comum" />
+	<Palavra
+        audio="Belo Horizonte ana"
+        idModoJogo="2"
+        idRegra="2"
+        nome="Belo Horizonte"
+        uso="comum" />
+	<Palavra
+        audio="Cabo Verde ana"
+        idModoJogo="2"
+        idRegra="2"
+        nome="Cabo Verde"
+        uso="comum" />
+	<Palavra
+        audio="Castelo Branco ana"
+        idModoJogo="2"
+        idRegra="2"
+        nome="Castelo Branco"
+        uso="comum" />
 </tabelas>

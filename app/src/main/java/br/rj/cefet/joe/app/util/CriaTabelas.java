@@ -21,6 +21,7 @@ public class CriaTabelas extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.w("CriandoDB", "Criando banco de dados. Versão: " + Constantes.DB_VERSION);
         this.db = db;
 
         criaTabelaJogo();
@@ -112,11 +113,11 @@ public class CriaTabelas extends SQLiteOpenHelper {
 
         Log.w("UpgradingDB", "Atualizando banco de dados da versão: " + oldVersion + " para a: "
                 + newVersion + ", todos os dados antigos serão excluídos.");
-        apagaTabelas();
+        apagaTabelas(db);
         onCreate(db);
     }
 
-    private void apagaTabelas() {
+    private void apagaTabelas(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS Palavra");
         db.execSQL("DROP TABLE IF EXISTS DicaRegra");
         db.execSQL("DROP TABLE IF EXISTS Regra");
