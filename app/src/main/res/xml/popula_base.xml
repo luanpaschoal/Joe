@@ -53,10 +53,10 @@ ainda que o primeiro elemento esteja reduzido."
         idNorma="2"
         palavraChave="'éi' e 'ói'" />
     <Regra
-        descricao="No 'i' e 'u' paroxítonos, antecedidos de um ditongo. OBS: Se o 'i' ou 'u' forem oxítonos (seguidos ou não de 's'), permanece o acento."
+        descricao="Usa-se acento agudo no 'i' e 'u' tônicos das oxítonas ou paroxítonas se eles forem hiatos e estiverem sozinhos na sílaba, ou acompanhados de s. OBS: Se estiverem antes de 'nh' ou depois de ditongo decrescente, não são acentuados."
         dificuldade="fácil"
         idNorma="2"
-        palavraChave="'i' e 'u'" />
+        palavraChave="'i' e 'u' em hiatos" />
     <Regra
         descricao="Deixa-se de usar o acento agudo para diferenciar alguns pares de paroxítonas homógrafas. "
         dificuldade="difícil"
@@ -64,242 +64,1544 @@ ainda que o primeiro elemento esteja reduzido."
         palavraChave="Paroxítonas Homógrafas" />
     <Regra
         descricao="Usa-se o hífen em palavras prefixais ou recompostas cujo 2º elemento é iniciado por 'h'"
-        dificuldade=""
+        dificuldade="difícil"
         idNorma="1"
         palavraChave="2º elemento 'h'" />
     <Regra
         descricao="Usa-se o hífen se o 1º elemento termina com a mesma vogal que inicia o 2º elemento"
-        dificuldade=""
+        dificuldade="difícil"
         idNorma="1"
-        palavraChave="Elementos com mesma vogal" />
+        palavraChave="Choque de vogais" />
     <Regra
         descricao="Usa-se o hífen se o prefixo for 'circum' ou 'pan' e o 2º elemento iniciar por vogal, 'h', 'm' ou 'n'"
-        dificuldade=""
+        dificuldade="difícil"
         idNorma="1"
         palavraChave="'circum' e 'pan'" />
     <Regra
         descricao="Usa-se o hífen se o prefixo for 'hiper', 'inter' ou 'super' e o 2º elemento iniciar por 'r'"
-        dificuldade=""
+        dificuldade="difícil"
         idNorma="1"
         palavraChave="'hiper', 'inter' e 'super'" />
     <Regra
         descricao="Usa-se o hífen se o prefixo for 'ex', 'sota', 'soto', 'vice' ou 'vizo'"
-        dificuldade=""
+        dificuldade="fácil"
         idNorma="1"
         palavraChave="'ex', 'sota', 'soto', 'vice' e 'vizo'" />
     <Regra
         descricao="Usa-se o hífen se os orefixos 'pós', 'pré' e 'pró' forem tônicos e graficamente acentuados"
-        dificuldade=""
+        dificuldade="fácil"
         idNorma="1"
         palavraChave="'pós', 'pré' e 'pró'" />
     <Regra
-        descricao="Não usa-se o hífen se o prefixo/falso prefixo terminar em vogal e o 2º elemento iniciar por 'r' ou 's', devendo ser duplicadas."
-        dificuldade=""
+        descricao="Não se usa o hífen se o prefixo/falso prefixo terminar em vogal e o 2º elemento iniciar por 'r' ou 's', devendo ser duplicadas."
+        dificuldade="difícil"
         idNorma="1"
         palavraChave="vogal + 'r' ou 's'" />
     <Regra
-        descricao="Não usa-se o hífen se o prefixo/falso prefixo terminar em vogal e o 2º elemento iniciar por vogal diferente"
-        dificuldade=""
+        descricao="Não se usa o hífen se o prefixo/falso prefixo terminar em vogal e o 2º elemento iniciar por vogal diferente"
+        dificuldade="difícil"
         idNorma="1"
         palavraChave="Elementos com vogais diferentes" />
     <Regra
-        descricao="Usa-se o hífen em casos de ênclise e de mesóclise"
-        dificuldade=""
+        descricao="Usa-se o hífen nas formas pronominais ligadas ao verbo por ênclise ou mesóclise"
+        dificuldade="fácil"
         idNorma="1"
         palavraChave="Ênclise e mesóclise" />
+	<Regra
+        descricao="Não se usa hífen em co+palavra iniciada por 'o'"
+        dificuldade="difícil"
+        idNorma="1"
+        palavraChave="'co'" />
 
-    <!--Em audio, coloque o nome do arquivo SEM a extensão ".mp3"-->
+    <DicaRegra
+        idRegra="1"
+        texto="Usa-se hífen em palavras compostas por justaposição com unidade sintagmática e semântica" />
+    <DicaRegra
+        idRegra="2"
+        texto="Usa-se hífen grão/grã ou verbo+topônimo" />
+    <DicaRegra
+        idRegra="3"
+        texto="Usa-se hífen em palavras compostas da botânica ou da zoologia" />
+    <DicaRegra
+        idRegra="4"
+        texto="Usa-se hífen em bem/mal+palavra iniciada por vogal ou h" />
+    <DicaRegra
+        idRegra="5"
+        texto="Usa-se hífen em além/aquém/recém/sem+palavra" />
+    <DicaRegra
+        idRegra="6"
+        texto="Não se usa hífen em locuções"  /> 
+    <DicaRegra
+        idRegra="7"
+        texto="Usa-se hífen em encadeamentos vocabulares" />
+    <DicaRegra
+        idRegra="8"
+        texto="Não se acentuam 'ei' e 'oi' abertos em paroxítonas " />
+    <DicaRegra
+        idRegra="9"
+        texto="Acentuam-se 'i' e 'u' de hiatos, não antecedidos por nh ou precedidos por ditongo crescente" />
+    <DicaRegra
+        idRegra="10"
+        texto="Perdeu-se o acento diferencial de paroxítonas homógrafas" />
+    <DicaRegra
+        idRegra="11"
+        texto="Usa-se hífen em prefixo+palavra iniciada por 'h'" />
+    <DicaRegra
+        idRegra="12"
+        texto="Usa-se hífen em choque vocálico (prefixo terminando com mesma vogal do segundo elemento)" />
+    <DicaRegra
+        idRegra="13"
+        texto="Usa-se hífen em circum/pan+palavra iniciada por vogal, 'h', 'm', 'n'" />
+    <DicaRegra
+        idRegra="14"
+        texto="Usa-se hífen em hiper/inter/super+palavra iniciada por 'r'" />
+    <DicaRegra
+        idRegra="15"
+        texto="Usa-se hífen com os prefixos ex/sota/soto/vice/vizo" />
+    <DicaRegra
+        idRegra="16"
+        texto="Usa-se hífen com os prefixos pré/pós/pró, tônicos e acentuados" />
+    <DicaRegra
+        idRegra="17"
+        texto="Duplica-se o 'r' e 's' em prefixo+palavra iniciada por tais consoantes" />
+    <DicaRegra
+        idRegra="18"
+        texto="Não se usa hífen em prefixo terminado em vogal+palavra iniciada por vogal diferente" />
+    <DicaRegra
+        idRegra="19"
+        texto="Usa-se hífen em ênclise e mesóclise" />
+    <DicaRegra
+        idRegra="20"
+        texto="Não se usa hífen em co+palavra iniciada por 'o'" />
+
+    <!--Em audio, coloque o nome do arquivo SEM a extensão ".mp3"; letras minúsculas; sem acento; sem hífen; sem espaço; pode underline '_'-->
     
 	<Palavra
-        audio="segunda-feira - ana"
-        idModoJogo="2"
+        audio="segunda_feira_max"
+        idModoJogo="1"
         idRegra="1"
         nome="segunda-feira"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="azul-claro ana"
-        idModoJogo="2"
+        audio="azul_claro_max"
+        idModoJogo="1"
         idRegra="1"
         nome="azul-claro"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="guarda-chuva ana"
-        idModoJogo="2"
+        audio="guarda_chuva_max"
+        idModoJogo="1"
         idRegra="1"
         nome="guarda-chuva"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="arco-íris ana"
-        idModoJogo="2"
+        audio="arco_iris_max"
+        idModoJogo="1"
         idRegra="1"
         nome="arco-íris"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="conta-gotas ana"
-        idModoJogo="2"
+        audio="conta_gotas_max"
+        idModoJogo="1"
         idRegra="1"
         nome="conta-gotas"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="tio-avô ana"
-        idModoJogo="2"
+        audio="tio_avo_max"
+        idModoJogo="1"
         idRegra="1"
         nome="tio-avô"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="norte-americano ana"
-        idModoJogo="2"
+        audio="norte_americano_max"
+        idModoJogo="1"
         idRegra="1"
         nome="norte-americano"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="sul-africano max"
-        idModoJogo="1"
+        audio="sul_africano_max"
+        idModoJogo="2"
         idRegra="1"
         nome="sul-africano"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="tenente-coronel max"
-        idModoJogo="1"
+        audio="tenente_coronel_max"
+        idModoJogo="2"
         idRegra="1"
         nome="tenente-coronel"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="fura-bolo max"
-        idModoJogo="1"
+        audio="fura_bolo_max"
+        idModoJogo="2"
         idRegra="1"
         nome="fura-bolo"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="médico-cirurgião max"
-        idModoJogo="1"
+        audio="medico_cirurgiao_max"
+        idModoJogo="2"
         idRegra="1"
         nome="médico-cirurgião"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="cirurgião-dentista max"
-        idModoJogo="1"
+        audio="cirurgiao_dentista_max"
+        idModoJogo="2"
         idRegra="1"
         nome="cirurgião-dentista"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="segundo-sargento max"
-        idModoJogo="1"
+        audio="segundo_sargento_max"
+        idModoJogo="2"
         idRegra="1"
         nome="segundo-sargento"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="primeiro-ministro max"
-        idModoJogo="1"
+        audio="primeiro_ministro_max"
+        idModoJogo="2"
         idRegra="1"
         nome="primeiro-ministro"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="guarda-noturno ana"
-        idModoJogo="2"
+        audio="guarda_noturno_max"
+        idModoJogo="1"
         idRegra="1"
         nome="guarda-noturno"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="turma-piloto ana"
-        idModoJogo="2"
+        audio="turma_piloto_max"
+        idModoJogo="1"
         idRegra="1"
         nome="turma-piloto"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="mato-grossense ana"
-        idModoJogo="2"
+        audio="mato_grossense_max"
+        idModoJogo="1"
         idRegra="1"
         nome="mato-grossense"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="finca-pé ana"
-        idModoJogo="2"
+        audio="finca_pe_max"
+        idModoJogo="1"
         idRegra="1"
         nome="finca-pé"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="ano-luz ana"
-        idModoJogo="2"
+        audio="ano_luz_max"
+        idModoJogo="1"
         idRegra="1"
         nome="ano-luz"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="rainha-cláudia ana"
-        idModoJogo="2"
+        audio="rainha_claudia_max"
+        idModoJogo="1"
         idRegra="1"
         nome="rainha-cláudia"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="primo-infecção ana"
-        idModoJogo="2"
+        audio="primo_infecçao_max"
+        idModoJogo="1"
         idRegra="1"
         nome="primo-infecção"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
     <Palavra
-        audio="Grã-Bretanha ana"
-        idModoJogo="2"
+        audio="gra_bretanha_max"
+        idModoJogo="1"
         idRegra="2"
         nome="Grã-Bretanha"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Passa-Quatro ana"
-        idModoJogo="2"
+        audio="passa_quatro_max"
+        idModoJogo="1"
         idRegra="2"
         nome="Passa-Quatro"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Baía de Todos-os-Santos ana"
-        idModoJogo="2"
+        audio="baia_de_todos_os_santos_max"
+        idModoJogo="1"
         idRegra="2"
         nome="Baía de Todos-os-Santos"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Grão-Pará ana"
-        idModoJogo="2"
+        audio="grao_para_max"
+        idModoJogo="1"
         idRegra="2"
         nome="Grão-Pará"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Quebra-Costas max"
-        idModoJogo="1"
+        audio="quebra_costas_max"
+        idModoJogo="2"
         idRegra="2"
         nome="Quebra-Costas"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Entre-os-Rios max"
-        idModoJogo="1"
+        audio="entre_os_rios_max"
+        idModoJogo="2"
         idRegra="2"
         nome="Entre-os-Rios"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Traga-Mouros max"
-        idModoJogo="1"
+        audio="traga_mouros_max"
+        idModoJogo="2"
         idRegra="2"
         nome="Traga-Mouros"
-        uso="incomum" />
+        uso="incomum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="América do Sul max"
-        idModoJogo="1"
+        audio="america_do_sul_max"
+        idModoJogo="2"
         idRegra="2"
         nome="América do Sul"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Belo Horizonte ana"
-        idModoJogo="2"
+        audio="belo_horizonte_max"
+        idModoJogo="1"
         idRegra="2"
         nome="Belo Horizonte"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Cabo Verde ana"
-        idModoJogo="2"
+        audio="cabo_verde_max"
+        idModoJogo="1"
         idRegra="2"
         nome="Cabo Verde"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
 	<Palavra
-        audio="Castelo Branco ana"
-        idModoJogo="2"
+        audio="castelo_branco_max"
+        idModoJogo="1"
         idRegra="2"
         nome="Castelo Branco"
-        uso="comum" />
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="santa_rita_do_oeste_max"
+        idModoJogo="1"
+        idRegra="2"
+        nome="Santa Rita do Oeste"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="guine_bissau_max"
+        idModoJogo="1"
+        idRegra="2"
+        nome="Guiné-Bissau"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="couve_flor_max"
+        idModoJogo="1"
+        idRegra="3"
+        nome="couve-flor"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="erva_doce_max"
+        idModoJogo="1"
+        idRegra="3"
+        nome="erva-doce"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="bem_me_quer_max"
+        idModoJogo="1"
+        idRegra="3"
+        nome="bem-me-quer"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cobra_d_agua_max"
+        idModoJogo="1"
+        idRegra="3"
+        nome="cobra-d’água"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="feijao_verde_max"
+        idModoJogo="2"
+        idRegra="3"
+        nome="feijão-verde"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="bem_te_vi_max"
+        idModoJogo="2"
+        idRegra="3"
+        nome="bem-te-vi"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="louva_a_deus_max"
+        idModoJogo="2"
+        idRegra="3"
+        nome="louva-a-deus"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ervilha_de_cheiro_max"
+        idModoJogo="2"
+        idRegra="3"
+        nome="ervilha-de-cheiro"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="erva_do_cha_max"
+        idModoJogo="1"
+        idRegra="3"
+        nome="erva-do-chá"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="abobora_menina_max"
+        idModoJogo="1"
+        idRegra="3"
+        nome="abóbora-menina"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cobra_capelo_max"
+        idModoJogo="1"
+        idRegra="3"
+        nome="cobra-capelo ana"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="bem_aventurado_max"
+        idModoJogo="1"
+        idRegra="4"
+        nome="bem-aventurado"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="bem_estar_max"
+        idModoJogo="1"
+        idRegra="4"
+        nome="bem-estar"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="mal_estar_max"
+        idModoJogo="2"
+        idRegra="4"
+        nome="mal-estar"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="bem_humorado_max"
+        idModoJogo="2"
+        idRegra="4"
+        nome="bem-humorado"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="mal_afortunado_max"
+        idModoJogo="1"
+        idRegra="4"
+        nome="mal-afortunado"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="mal_humorado_max"
+        idModoJogo="1"
+        idRegra="4"
+        nome="mal-humorado"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="recem_nascido_max"
+        idModoJogo="1"
+        idRegra="5"
+        nome="recém-nascido"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="sem_terra_max"
+        idModoJogo="1"
+        idRegra="5"
+        nome="sem-terra"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="sem_vergonha_max"
+        idModoJogo="1"
+        idRegra="5"
+        nome="sem-vergonha"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="recem_casado_max"
+        idModoJogo="2"
+        idRegra="5"
+        nome="recém-casado"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="sem_teto_max"
+        idModoJogo="2"
+        idRegra="5"
+        nome="sem-teto"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="alem_fronteiras_max"
+        idModoJogo="2"
+        idRegra="5"
+        nome="além-fronteiras"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="alem_mar_max"
+        idModoJogo="2"
+        idRegra="5"
+        nome="além-mar"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="alem_atlantico_max"
+        idModoJogo="1"
+        idRegra="5"
+        nome="além-Atlântico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="aquem_fiar_max"
+        idModoJogo="1"
+        idRegra="5"
+        nome="aquém-fiar"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="aquem_pirineus_max"
+        idModoJogo="1"
+        idRegra="5"
+        nome="aquém-Pirineus"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cao_de_guarda_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="cão de guarda"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="fim_de_semana_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="fim de semana"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="em_cima_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="em cima"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="por_isso_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="por isso"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cor_de_açafrao_max"
+        idModoJogo="2"
+        idRegra="6"
+        nome="cor de açafrão"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="abaixo_de_max"
+        idModoJogo="2"
+        idRegra="6"
+        nome="abaixo de"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cor_de_vinho_max"
+        idModoJogo="2"
+        idRegra="6"
+        nome="cor de vinho"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="acerca_de_max"
+        idModoJogo="2"
+        idRegra="6"
+        nome="acerca de"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cada_um_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="cada um"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="a_fim_de_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="a fim de"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ao_passo_que_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="ao passo que"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="a_parte_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="à parte"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="logo_que_max"
+        idModoJogo="1"
+        idRegra="6"
+        nome="logo que"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="liberdade_igualdade_fraternidade_max"
+        idModoJogo="1"
+        idRegra="7"
+        nome="Liberdade-Igualdade-Fraternidade"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="lisboa_coimbra_porto_max"
+        idModoJogo="1"
+        idRegra="7"
+        nome="Lisboa-Coimbra-Porto"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="austria_hungria_max"
+        idModoJogo="2"
+        idRegra="7"
+        nome="Áustria-Hungria"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="rio_niteroi_max"
+        idModoJogo="2"
+        idRegra="7"
+        nome="Rio-Niterói"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="angola_brasil_max"
+        idModoJogo="1"
+        idRegra="7"
+        nome="Angola-Brasil"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="toquio_rio_de_janeiro_max"
+        idModoJogo="1"
+        idRegra="7"
+        nome="Tóquio-Rio de Janeiro"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="estreia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="estreia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="estreio_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="estreio"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="assembleia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="assembleia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="plateia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="plateia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="alcateia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="alcateia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="colmeia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="colmeia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ideia_max"
+        idModoJogo="2"
+        idRegra="8"
+        nome="ideia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="coreia_max"
+        idModoJogo="2"
+        idRegra="8"
+        nome="Coreia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="epopeia_max"
+        idModoJogo="2"
+        idRegra="8"
+        nome="epopeia"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="geleia_max"
+        idModoJogo="2"
+        idRegra="8"
+        nome="geleia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="boia_max"
+        idModoJogo="2"
+        idRegra="8"
+        nome="boia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="paranoico_max"
+        idModoJogo="2"
+        idRegra="8"
+        nome="paranoico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="onomatopeia_max"
+        idModoJogo="2"
+        idRegra="8"
+        nome="onomatopeia"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="apoio_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="apoio"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="apoia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="apoia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="jiboia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="jiboia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="teteia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="teteia"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="joia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="joia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="alcaloide_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="alcaloide"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="tipoia_max"
+        idModoJogo="1"
+        idRegra="8"
+        nome="tipoia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="feiura_max"
+        idModoJogo="1"
+        idRegra="9"
+        nome="feiura"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="baiuca_max"
+        idModoJogo="1"
+        idRegra="9"
+        nome="baiuca"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pais_max"
+        idModoJogo="1"
+        idRegra="9"
+        nome="país"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="viuva_max"
+        idModoJogo="2"
+        idRegra="9"
+        nome="viúva"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="saida_max"
+        idModoJogo="2"
+        idRegra="9"
+        nome="saída"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="sauva_max"
+        idModoJogo="2"
+        idRegra="9"
+        nome="saúva"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="faisca_max"
+        idModoJogo="2"
+        idRegra="9"
+        nome="faísca"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="rainha_max"
+        idModoJogo="1"
+        idRegra="9"
+        nome="rainha"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="campainha_max"
+        idModoJogo="1"
+        idRegra="9"
+        nome="campainha"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="moinho_max"
+        idModoJogo="1"
+        idRegra="9"
+        nome="moinho"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="boiuno_max"
+        idModoJogo="1"
+        idRegra="9"
+        nome="boiuno"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="para_max"
+        idModoJogo="1"
+        idRegra="10"
+        nome="para"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pelo_max"
+        idModoJogo="2"
+        idRegra="10"
+        nome="pelo"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="polo_max"
+        idModoJogo="1"
+        idRegra="10"
+        nome="polo"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="anti_higienico_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="anti-higiênico"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pre_historia_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="pré-história"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="eletro_higrometro_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="eletro-higrômetro"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="circum_hospitalar_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="circum-hospitalar"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="proto_historia_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="proto-história"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="geo_historia_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="geo-hisória"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="co_herdeiro_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="co-herdeiro"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="sub_hepatico_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="sub-hepático"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="neo_helenico_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="neo-helênico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="contra_harmonico_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="contra-harmônico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="super_homem_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="super-homem"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pan_helenismo_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="pan-helenismo"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="extra_humano_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="extra-humano"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ultra_hiperbolico_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="ultra-hiperbólico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="semi_hospitalar_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="semi-hospitalar"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="desumano_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="sesumano"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="inabil_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="inábil"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="inumano_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="inumano"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="desumidificar_max"
+        idModoJogo="2"
+        idRegra="11"
+        nome="desumidificar"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="inapto_max"
+        idModoJogo="1"
+        idRegra="11"
+        nome="inapto"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="anti_iberico_max"
+        idModoJogo="1"
+        idRegra="12"
+        nome="anti-ibérico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="arqui_inimigo_max"
+        idModoJogo="1"
+        idRegra="12"
+        nome="arqui-inimigo"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="micro_onda_max"
+        idModoJogo="1"
+        idRegra="12"
+        nome="micro-onda"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="contra_almirante_max"
+        idModoJogo="2"
+        idRegra="12"
+        nome="contra-almirante"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="arqui_irmandade_max"
+        idModoJogo="2"
+        idRegra="12"
+        nome="arqui-irmandade"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="semi_internato_max"
+        idModoJogo="2"
+        idRegra="12"
+        nome=""
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="infra_axilar_max"
+        idModoJogo="2"
+        idRegra="12"
+        nome="infra-axilar"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="auto_observacao_max"
+        idModoJogo="1"
+        idRegra="12"
+        nome="auto-observação"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="supra_auricular_max"
+        idModoJogo="1"
+        idRegra="12"
+        nome="supra-auricular"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="eletro_otica_max"
+        idModoJogo="1"
+        idRegra="12"
+        nome="eletro-ótica"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="circum_escolar_max"
+        idModoJogo="1"
+        idRegra="13"
+        nome="circum-escolar"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="circum_murado_max"
+        idModoJogo="1"
+        idRegra="13"
+        nome="circum-murado"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="circum_navegacao_max"
+        idModoJogo="2"
+        idRegra="13"
+        nome="circum-navegação"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pan_africano_max"
+        idModoJogo="2"
+        idRegra="13"
+        nome="pan-africano"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pan_magico_max"
+        idModoJogo="1"
+        idRegra="13"
+        nome="pan-mágico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pan_negritude_max"
+        idModoJogo="1"
+        idRegra="13"
+        nome="pan-negritude"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="hiper_requintado_max"
+        idModoJogo="1"
+        idRegra="14"
+        nome="hiper-requintado"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="inter_resistente_max"
+        idModoJogo="2"
+        idRegra="14"
+        nome="inter-resistente"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="super_revista_max"
+        idModoJogo="1"
+        idRegra="14"
+        nome="super-revista"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ex_aluno_max"
+        idModoJogo="1"
+        idRegra="15"
+        nome="ex-aluno"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ex_presidente_max"
+        idModoJogo="1"
+        idRegra="15"
+        nome="ex-presidente"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="vice_presidente_max"
+        idModoJogo="1"
+        idRegra="15"
+        nome="vice-presidente"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ex_diretor_max"
+        idModoJogo="2"
+        idRegra="15"
+        nome="ex-diretor"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ex_rei_max"
+        idModoJogo="2"
+        idRegra="15"
+        nome="ex-rei"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="vice_reitor_max"
+        idModoJogo="2"
+        idRegra="15"
+        nome="vice-reitor"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ex_hospedeiro_max"
+        idModoJogo="2"
+        idRegra="15"
+        nome="ex-hospedeiro"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="sota_piloto_max"
+        idModoJogo="1"
+        idRegra="15"
+        nome="sota-piloto"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="vizo_rei_max"
+        idModoJogo="1"
+        idRegra="15"
+        nome="vizo-rei"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="ex_primeiro_ministro_max"
+        idModoJogo="1"
+        idRegra="15"
+        nome="ex-primeiro-ministro"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="soto_mestre_max"
+        idModoJogo="1"
+        idRegra="15"
+        nome="soto-mestre"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pos_graduacao_max"
+        idModoJogo="1"
+        idRegra="16"
+        nome="pós-graduação"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pre_escolar_max"
+        idModoJogo="1"
+        idRegra="16"
+        nome="pré-escolar"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pro_europeu_max"
+        idModoJogo="1"
+        idRegra="16"
+        nome="pró-europeu"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pos_tonico_max"
+        idModoJogo="2"
+        idRegra="16"
+        nome="pós-tônico"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pre_natal_max"
+        idModoJogo="2"
+        idRegra="16"
+        nome="pré-natal"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pro_reitor_max"
+        idModoJogo="2"
+        idRegra="16"
+        nome="pró-reitor"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pre_conceber_max"
+        idModoJogo="1"
+        idRegra="16"
+        nome="pré-conceber"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pro_africano_max"
+        idModoJogo="1"
+        idRegra="16"
+        nome="pró-africano"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="antirreligioso_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="antirreligioso"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="contrassenha_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="contrassenha"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="biorritmo_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="biorritmo"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="antissemita_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="antissemita"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="extrarregular_max"
+        idModoJogo="2"
+        idRegra="17"
+        nome="extrarregular"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="eletrossiderurgica_max"
+        idModoJogo="2"
+        idRegra="17"
+        nome="eletrossiderúrgica"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="contrarregra_max"
+        idModoJogo="2"
+        idRegra="17"
+        nome="contrarregra"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="infrassom_max"
+        idModoJogo="2"
+        idRegra="17"
+        nome="infrassom"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="microssistema_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="microssistema"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cosseno_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="cosseno"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="minissaia_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="minissaia"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="microrradiografia_max"
+        idModoJogo="1"
+        idRegra="17"
+        nome="microrradiografia"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="antiaereo_max"
+        idModoJogo="1"
+        idRegra="18"
+        nome="antiaéreo"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="aeroespacial_max"
+        idModoJogo="1"
+        idRegra="18"
+        nome="aeroespacial"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="agroindustrial_max"
+        idModoJogo="1"
+        idRegra="18"
+        nome="agroindustrial"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="coeducacao_max"
+        idModoJogo="2"
+        idRegra="18"
+        nome="coeducação"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="autoestrada_max"
+        idModoJogo="2"
+        idRegra="18"
+        nome="autoestrada"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="hidroeletrica_max"
+        idModoJogo="2"
+        idRegra="18"
+        nome="hidoelétrica"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="extraescolar_max"
+        idModoJogo="1"
+        idRegra="18"
+        nome="extraescolar"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="autoaprendizagem_max"
+        idModoJogo="1"
+        idRegra="18"
+        nome="autoaprendizagem"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pluriestatal_max"
+        idModoJogo="1"
+        idRegra="18"
+        nome="pluriestatal"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="adora_lo_max"
+        idModoJogo="1"
+        idRegra="19"
+        nome="adorá-lo"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="merece_lo_max"
+        idModoJogo="1"
+        idRegra="19"
+        nome="merecê-lo"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="avista_la_iamos_max"
+        idModoJogo="2"
+        idRegra="19"
+        nome="avistá-la-íamos"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="dar_se_ia_max"
+        idModoJogo="2"
+        idRegra="19"
+        nome="dar-se-ia"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="quere_la"
+        idModoJogo="2"
+        idRegra="19"
+        nome="querê-la"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="pediu_lhe_max"
+        idModoJogo="1"
+        idRegra="19"
+        nome="pediu-lhe"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="contar_te_emos_max"
+        idModoJogo="1"
+        idRegra="19"
+        nome="contar-te-emos"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="coobrigacao_max"
+        idModoJogo="1"
+        idRegra="20"
+        nome="coobrigração"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="coordenar_max"
+        idModoJogo="2"
+        idRegra="20"
+        nome="coordenar"
+        uso="comum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="coocupante_max"
+        idModoJogo="2"
+        idRegra="20"
+        nome="coocupante"
+        uso="incomum" 
+		qtdVisualizacao="0" />
+	<Palavra
+        audio="cooperacao_max"
+        idModoJogo="1"
+        idRegra="20"
+        nome="cooperação"
+        uso="comum" 
+		qtdVisualizacao="0" />
 </tabelas>
