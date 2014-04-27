@@ -30,6 +30,8 @@ public class CriaTabelas extends SQLiteOpenHelper {
         criaTabelaRegra();
         criaTabelaDicaRegra();
         criaTabelaPalavra();
+
+        super.close();
     }
 
     private void criaTabelaJogo() {
@@ -79,7 +81,6 @@ public class CriaTabelas extends SQLiteOpenHelper {
     private void criaTabelaDicaRegra() {
         try {
             db.execSQL("CREATE TABLE IF NOT EXISTS DicaRegra (_id INTEGER PRIMARY KEY, \n" +
-                    "tipo TEXT NOT NULL, \n" +
                     "texto TEXT,\n" +
                     "idRegra INTEGER,\n" +
                     "FOREIGN KEY(idRegra) REFERENCES Regra(_id));");

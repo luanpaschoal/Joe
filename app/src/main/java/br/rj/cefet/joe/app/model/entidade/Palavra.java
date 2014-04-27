@@ -4,16 +4,15 @@ package br.rj.cefet.joe.app.model.entidade;
  * Created by Luan on 05/04/2014.
  */
 public class Palavra {
-    String nome;
-    String audio;
-    String uso;
-    int qtdVisualizacao;
-    int qtdErros;
+    private String nome;
+    private String audio;
+    private String uso;
+    private int qtdVisualizacao;
+    private int qtdErros;
+    private int idModoJogo;
+    private int idRegra;
 
-    private ModoJogo modoJogo = new ModoJogo();
-    private Regra regra = new Regra();
-
-    public Palavra(String nome, String audio, String dificuldade, String uso, int qtdVisualizacao, int qtdErros) {
+    public Palavra(String nome, String audio, String uso, int qtdVisualizacao, int qtdErros) {
         this.nome = nome;
         this.audio = audio;
         this.uso = uso;
@@ -64,19 +63,19 @@ public class Palavra {
         this.qtdErros = qtdErros;
     }
 
-    public ModoJogo getModoJogo() {
-        return modoJogo;
+    public int getIdModoJogo() {
+        return idModoJogo;
     }
 
-    public void setModoJogo(ModoJogo modoJogo) {
-        this.modoJogo = modoJogo;
+    public void setIdModoJogo(int idModoJogo) {
+        this.idModoJogo = idModoJogo;
     }
 
-    public Regra getRegra() {
-        return regra;
+    public int getIdRegra() {
+        return idRegra;
     }
 
-    public void setRegra(Regra regra) {
-        this.regra = regra;
+    public void setIdRegra(int idRegra) {
+        this.idRegra = idRegra;
     }
 }

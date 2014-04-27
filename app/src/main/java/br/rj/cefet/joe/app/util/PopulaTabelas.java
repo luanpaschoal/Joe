@@ -24,7 +24,7 @@ public class PopulaTabelas extends SQLiteOpenHelper {
     private final Context fContext;
 
     public PopulaTabelas(Context context) {
-        super(context, Constantes.NOME_DB, null, 1);
+        super(context, Constantes.NOME_DB, null, Constantes.DB_VERSION);
         fContext = context;
 
         super.getWritableDatabase();
@@ -69,6 +69,7 @@ public class PopulaTabelas extends SQLiteOpenHelper {
                 _xml.close();
             }
         }
+        super.close();
     }
 
     private void insereModoJogo(XmlResourceParser _xml, SQLiteDatabase db) {
@@ -121,6 +122,7 @@ public class PopulaTabelas extends SQLiteOpenHelper {
         String _nome = _xml.getAttributeValue(null, "nome");
         String _audio = _xml.getAttributeValue(null, "audio");
         String _uso = _xml.getAttributeValue(null, "uso");
+        String _qtdVisualizacao = _xml.getAttributeValue(null, "qtdVisualizacao");
         String _idModoJogo = _xml.getAttributeValue(null, "idModoJogo");
         String _idRegra = _xml.getAttributeValue(null, "idRegra");
 
@@ -128,6 +130,7 @@ public class PopulaTabelas extends SQLiteOpenHelper {
         _Values.put("nome", _nome);
         _Values.put("audio", _audio);
         _Values.put("uso", _uso);
+        _Values.put("qtdVisualizacao", _qtdVisualizacao);
         _Values.put("idModoJogo", _idModoJogo);
         _Values.put("idRegra", _idRegra);
 
@@ -137,8 +140,6 @@ public class PopulaTabelas extends SQLiteOpenHelper {
     /* Update database to latest version */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        CriaTabelas criaTabelas = new CriaTabelas(fContext);
-//        criaTabelas.onUpgrade(db, oldVersion, newVersion);
         onCreate(db);
     }
 }

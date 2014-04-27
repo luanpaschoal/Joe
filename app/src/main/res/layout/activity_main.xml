@@ -8,7 +8,8 @@
     android:baselineAligned="false"
     android:background="#ffffff"
     android:gravity="center|top"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:id="@+id/llTelaModoJogo">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -22,8 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/jogar"
-        android:id="@+id/btnJogar"
-        android:background="#65b2ff"
+        android:id="@+id/btJogar"
+        android:background="#ff33b5e5"
         android:clickable="true"
         android:textSize="@dimen/abc_action_bar_title_text_size"
         android:textStyle="bold"
@@ -33,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/treinar"
-        android:id="@+id/btnTreinar"
+        android:id="@+id/btTreinar"
         android:background="#2ae64c"
         android:clickable="true"
         android:textStyle="bold"

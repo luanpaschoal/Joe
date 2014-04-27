@@ -15,6 +15,23 @@ public final class Constantes {
     public static final String DICA_REGRA = "DicaRegra";
     public static final String PALAVRA = "Palavra";
 
+    public static final String MODO_JOGAR = "Jogando";
+    public static final String MODO_TREINAR = "Treinando";
+
     public static final int ID_JOGAR = 1;
     public static final int ID_TREINAR = 2;
+
+    //tempo em Milissegundos, atualmente equivalente a 60 segundos
+    public static final int TEMPO_PARTIDA = 60000;
+    //atualmente equivalente a 1 segundo, intervalo usado na contagem regressiva.
+    public static final int TEMPO_INTERVALO = 1000;
+    public static final int PONTOS_FACIL = 5;
+    public static final int PONTOS_DIFICIL = 10;
+
+    public static final int ID_HIFEN = 1;
+    public static final int ID_ACENTUACAO = 2;
+
+    public static final int INFORMACAO = 0;
+    public static final int AVISO = 1;
+    public static final int ERRO = 2;
 }

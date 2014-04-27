@@ -4,5 +4,13 @@
     <string name="app_name">Jogo Ortográfico Educacional</string>
     <string name="treinar">Treinar</string>
     <string name="jogar">Jogar</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_partida_view">Partida</string>
+    <string name="segundos_restantes"> segundos restantes.</string>
+    <string name="acabou_tempo">Acabou o tempo!</string>
+    <string name="modo_jogo">Modo de Jogo</string>
+    <string name="ouvir">Ouvir</string>
+    <string name="btProximaPalavra">Próxima Palavra</string>
 
 </resources>

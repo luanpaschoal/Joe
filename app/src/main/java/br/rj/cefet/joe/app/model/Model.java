@@ -9,6 +9,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -16,16 +17,23 @@ import java.util.ArrayList;
 import br.rj.cefet.joe.app.model.entidade.Palavra;
 import br.rj.cefet.joe.app.util.Constantes;
 import br.rj.cefet.joe.app.util.CriaTabelas;
-import br.rj.cefet.joe.app.util.Mensagem;
 import br.rj.cefet.joe.app.util.PopulaTabelas;
-import br.rj.cefet.joe.app.view.PartidaView;
 
-public final class Model {
-    private final SQLiteDatabase database = null;
+public final class Model extends SQLiteOpenHelper {
+    private SQLiteDatabase database;
 
     public Model(final Context ctx) {
+        super(ctx, Constantes.NOME_DB, null, Constantes.DB_VERSION);
+
         CriaTabelas criaTabelas = new CriaTabelas(ctx);
         PopulaTabelas populaTabelas = new PopulaTabelas(ctx);
+
+        database = super.getWritableDatabase();
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        this.database = sqLiteDatabase;
     }
 
     public void add(ContentValues data, String tabela) {
@@ -57,17 +65,19 @@ public final class Model {
     public ArrayList<Palavra> getPalavras(int idModoJogo) {
         Log.d("Model", "getPalavras()");
         try {
-            String tabela = Constantes.PALAVRA;
-            String[] collumns = null;
-            String where = " idModoJogo+=? ";
-            String[] parametros = new String[]{String.valueOf(idModoJogo)};
-            String groupBy = null;
-            String having = null;
-            String orderby = null;
+//            String tabela = Constantes.PALAVRA;
+//            String[] collumns = null;
+//            String where = " idModoJogo+=? ";
+//            String[] parametros = new String[]{String.valueOf(idModoJogo)};
+//            String groupBy = null;
+//            String having = null;
+//            String orderby = null;
 
-            final Cursor c = this.database.query(tabela, collumns, where, parametros, groupBy, having, orderby);
             ArrayList<Palavra> palavras = new ArrayList<Palavra>();
             Palavra palavra = new Palavra();
+//            final Cursor c = this.database.query(tabela, collumns, where, parametros, groupBy, having, orderby);
+            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.PALAVRA + " WHERE idModoJogo =? ORDER BY qtdVisualizacao ASC",
+                    new String[]{String.valueOf(idModoJogo)});
 
             if (c != null) {
                 c.moveToFirst();
@@ -77,6 +87,8 @@ public final class Model {
                     palavra.setUso(c.getString(3));
                     palavra.setQtdVisualizacao(c.getInt(4));
                     palavra.setQtdErros(c.getInt(5));
+                    palavra.setIdModoJogo(c.getInt(6));
+                    palavra.setIdRegra(c.getInt(7));
 
                     palavras.add(palavra);
                     c.moveToNext();
@@ -88,5 +100,46 @@ public final class Model {
             Log.e("Model.getPalavras", e.toString(), e);
             return null;
         }
+    }
+
+    public String getDica(int idRegra) {
+        String dica = "";
+        try {
+            final Cursor c = database.rawQuery("SELECT texto FROM " + Constantes.DICA_REGRA + " WHERE idRegra =?",
+                    new String[]{String.valueOf(idRegra)});
+
+            if (c != null) {
+                c.moveToFirst();
+                dica = c.getString(0);
+                c.close();
+            }
+            return dica;
+        } catch (SQLiteException e) {
+            Log.e("Model.getDica", e.toString(), e);
+            return "";
+        }
+    }
+
+    public int getIdNorma(int idRegra) {
+        int idNorma = 0;
+        try {
+            final Cursor c = database.rawQuery("SELECT idNorma FROM " + Constantes.REGRA + " WHERE _id =?",
+                    new String[]{String.valueOf(idRegra)});
+
+            if (c != null) {
+                c.moveToFirst();
+                idNorma = c.getInt(0);
+                c.close();
+            }
+            return idNorma;
+        } catch (SQLiteException e) {
+            Log.e("Model.getIdNorma", e.toString(), e);
+            return 0;
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
+        onCreate(sqLiteDatabase);
     }
 }
