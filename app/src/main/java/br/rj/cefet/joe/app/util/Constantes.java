@@ -23,6 +23,8 @@ public final class Constantes {
 
     //tempo em Milissegundos, atualmente equivalente a 60 segundos
     public static final int TEMPO_PARTIDA = 60000;
+    public static final int QTD_PALAVRAS_PARTIDA = 20;
+
     //atualmente equivalente a 1 segundo, intervalo usado na contagem regressiva.
     public static final int TEMPO_INTERVALO = 1000;
     public static final int PONTOS_FACIL = 5;

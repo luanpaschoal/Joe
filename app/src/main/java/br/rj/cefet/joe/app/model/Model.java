@@ -90,17 +90,16 @@ public final class Model extends SQLiteOpenHelper {
 //            String orderby = null;
 
             ArrayList<Palavra> palavras = new ArrayList<Palavra>();
-            Palavra palavra = new Palavra();
+
 //            final Cursor c = this.database.query(tabela, collumns, where, parametros, groupBy, having, orderby);
 
-            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.PALAVRA + " WHERE idModoJogo =? ORDER BY qtdVisualizacao ASC LIMIT 20",
+            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.PALAVRA + " WHERE idModoJogo =? ORDER BY qtdVisualizacao ASC LIMIT "+ Constantes.QTD_PALAVRAS_PARTIDA,
                     new String[]{String.valueOf(idModoJogo)});
-//            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.REGRA, new String[]{});
-            int i = c.getCount();
 
             if (c != null) {
                 c.moveToFirst();
                 while (c.isAfterLast() == false) {
+                    Palavra palavra = new Palavra();
                     palavra.setNome(c.getString(1));
                     palavra.setAudio(c.getString(2));
                     palavra.setUso(c.getString(3));

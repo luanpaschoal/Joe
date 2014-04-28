@@ -6,11 +6,13 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class PartidaActivity extends Activity {
     private Controller controller;
     private ArrayList<Palavra> palavras = new ArrayList<Palavra>();
     MediaPlayer mediaPlayer = new MediaPlayer();
+    private Chronometer cronometro;
 
     private int modoJogo;
     //auxiliar para avançar na lista de palavra
@@ -64,7 +67,8 @@ public class PartidaActivity extends Activity {
         palavras = controller.getPalavras(modoJogo);
 
         ajustaTela(modoJogo);
-        carregarAudio();
+        prepararAudio();
+        iniciarCronometro();
 
         this.btOuvir.setOnClickListener(this.handleOuvirEvent);
         this.etPalavraDigitada.setOnClickListener(this.handlePalavraDigitadaEvent);
@@ -114,7 +118,7 @@ public class PartidaActivity extends Activity {
         @Override
         public void onClick(final View view) {
             Log.d("MainActivity.handleOuvirEvent", "botão ouvir acionado");
-            carregarAudio();
+            tocarAudio();
         }
     };
 
@@ -131,16 +135,17 @@ public class PartidaActivity extends Activity {
         public void onClick(final View view) {
             Log.d("MainActivity.handleProximaPalavraEvent", "botão próxima palavra acionado");
             verificarPalavraDigitada();
+            etPalavraDigitada.setText("");
             carregarProximaPalavra();
         }
 
         private void verificarPalavraDigitada() {
-//            TODO
             int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
             int idNormaPalavra = controller.getIdNorma(idRegra);
             String palavraAtual = palavras.get(posicaoAtual).getNome();
+            String palavraDigitada = etPalavraDigitada.getText().toString();
 
-            if (palavraAtual.equals(etPalavraDigitada)) {
+            if (palavraAtual.equalsIgnoreCase(palavraDigitada)) {
                 alterarAnimacaoBackgroud(R.drawable.borda_acerto);
                 qtdAcertos++;
                 tvQtdAcertos.setText(String.valueOf(qtdAcertos));
@@ -196,26 +201,48 @@ public class PartidaActivity extends Activity {
 
         private void carregarProximaPalavra() {
             posicaoAtual++;
-            carregarAudio();
+            if (posicaoAtual == Constantes.QTD_PALAVRAS_PARTIDA) {
+                terminarPartida();
+            } else {
+                mediaPlayer.reset();
+                prepararAudio();
+            }
         }
     };
 
-    private void carregarAudio() {
+    private void prepararAudio() {
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
             String nomeArquivo = getPalavras().get(posicaoAtual).getAudio();
             Uri myUri = Uri.parse("android.resource://br.rj.cefet.joe.app/raw/" + nomeArquivo);
             mediaPlayer.setDataSource(PartidaActivity.this, myUri);
             mediaPlayer.prepare();
-            mediaPlayer.start();
-            mediaPlayer.stop();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private void tocarAudio() {
+        try {
+            mediaPlayer.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void iniciarCronometro(){
+        cronometro.setBase(SystemClock.elapsedRealtime());
+
+        cronometro.start();
+    }
+
     private void terminarPartida() {
-        //TODO: tela de resultado
+        cronometro.stop();
+        long elapsedMillis = SystemClock.elapsedRealtime() - cronometro.getBase();
+        int duracaoEmSegundos = (int) elapsedMillis / 1000;
+        controller.setDuracao(duracaoEmSegundos);
+
+        controller.mostrarResultado();
     }
 
     @Override

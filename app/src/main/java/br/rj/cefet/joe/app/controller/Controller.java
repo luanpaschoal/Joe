@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import br.rj.cefet.joe.app.model.Model;
 import br.rj.cefet.joe.app.model.entidade.Palavra;
 import br.rj.cefet.joe.app.view.PartidaActivity;
+import br.rj.cefet.joe.app.view.ResultadoActivity;
 
 /**
  * Created by Luan on 12/04/2014.
@@ -38,26 +39,21 @@ public class Controller extends Activity {
         return model.getPalavras(idModoJogo);
     }
 
+    public void mostrarResultado() {
+        Intent it = new Intent(ctx, ResultadoActivity.class);
+        it.putExtra("DURACAO", duracao);
+        it.putExtra("ERROS_HIFEN", qtdErrosHifen);
+        it.putExtra("ACERTOS_HIFEN", qtdAcertosHifen);
+        it.putExtra("ACERTOS_ACENTUACAO", qtdAcertosAcentuacao);
+        it.putExtra("ERROS_ACENTUACAO", qtdErrosAcentuacao);
+        ctx.startActivity(it);
+    }
+
     /*public void addTarefa(final String titulo)
     {
         final ContentValues data = new ContentValues();
         data.put("titulo", titulo);
         model.addTarefa(data);
-    }
-
-    public void deleteTarefa(final String titulo)
-    {
-        model.deleteTarefa("titulo='" + titulo + "'");
-    }
-
-    public void deleteTarefa(final long id)
-    {
-        model.deleteTarefa("id='" + id + "'");
-    }
-
-    public void deleteAllTarefa()
-    {
-        model.deleteTarefa(null);
     }*/
 
     public String getDica(int idRegra) {
@@ -107,12 +103,4 @@ public class Controller extends Activity {
     public void setQtdErrosAcentuacao(int qtdErrosAcentuacao) {
         this.qtdErrosAcentuacao = qtdErrosAcentuacao;
     }
-
-//    public int getTempoLimite() {
-//        return tempoLimite;
-//    }
-//
-//    public void setTempoLimite(int tempoLimite) {
-//        this.tempoLimite = tempoLimite;
-//    }
 }
