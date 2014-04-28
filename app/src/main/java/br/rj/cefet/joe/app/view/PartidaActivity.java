@@ -26,7 +26,7 @@ import br.rj.cefet.joe.app.util.Mensagem;
 public class PartidaActivity extends Activity {
 
     private TextView tvModoJogo;
-    private TextView tfContagemRegressiva;
+    private TextView tvContagemRegressiva;
     private Button btOuvir;
     private EditText etPalavraDigitada;
     private Button btProximaPalavra;
@@ -52,7 +52,7 @@ public class PartidaActivity extends Activity {
         this.controller = new Controller(PartidaActivity.this);
 
         this.tvModoJogo = (TextView) this.findViewById(R.id.tvModoJogo);
-        this.tfContagemRegressiva = (TextView) this.findViewById(R.id.tfContagemRegressiva);
+        this.tvContagemRegressiva = (TextView) this.findViewById(R.id.tvContagemRegressiva);
         this.btOuvir = (Button) this.findViewById(R.id.btOuvir);
         this.etPalavraDigitada = (EditText) this.findViewById(R.id.etPalavraDigitada);
         this.btProximaPalavra = (Button) this.findViewById(R.id.btProximaPalavra);
@@ -85,7 +85,7 @@ public class PartidaActivity extends Activity {
     private void modoJogar() {
         tvModoJogo.setText(Constantes.MODO_JOGAR);
         isPermitidoDica = false;
-        tfContagemRegressiva.setVisibility(View.VISIBLE);
+        tvContagemRegressiva.setVisibility(View.VISIBLE);
         contagemRegressiva();
     }
 
@@ -93,11 +93,11 @@ public class PartidaActivity extends Activity {
         new CountDownTimer(Constantes.TEMPO_PARTIDA, Constantes.TEMPO_INTERVALO) {
 
             public void onTick(long millisUntilFinished) {
-                tfContagemRegressiva.setText(millisUntilFinished / 1000 + " segundos restantes.");
+                tvContagemRegressiva.setText(millisUntilFinished / 1000 + " segundos restantes.");
             }
 
             public void onFinish() {
-                tfContagemRegressiva.setText("Acabou o tempo!");
+                tvContagemRegressiva.setText("Acabou o tempo!");
                 terminarPartida();
             }
         }.start();
@@ -106,7 +106,7 @@ public class PartidaActivity extends Activity {
     private void modoTreinar() {
         tvModoJogo.setText(Constantes.MODO_TREINAR);
         isPermitidoDica = true;
-        tfContagemRegressiva.setVisibility(View.INVISIBLE);
+        tvContagemRegressiva.setVisibility(View.INVISIBLE);
     }
 
 
@@ -146,11 +146,11 @@ public class PartidaActivity extends Activity {
                 tvQtdAcertos.setText(String.valueOf(qtdAcertos));
                 addQtdAcertoNorma(idNormaPalavra, qtdAcertos);
             } else {
+                mostraDica(isPermitidoDica);
                 alterarAnimacaoBackgroud(R.drawable.borda_erro);
                 qtdErros++;
                 tvQtdErros.setText(String.valueOf(qtdErros));
                 addQtdErroNorma(idNormaPalavra, qtdErros);
-                mostraDica(isPermitidoDica);
             }
         }
 
@@ -208,6 +208,7 @@ public class PartidaActivity extends Activity {
             mediaPlayer.setDataSource(PartidaActivity.this, myUri);
             mediaPlayer.prepare();
             mediaPlayer.start();
+            mediaPlayer.stop();
         } catch (Exception e) {
             e.printStackTrace();
         }

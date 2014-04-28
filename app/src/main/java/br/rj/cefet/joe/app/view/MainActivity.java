@@ -29,8 +29,6 @@ public class MainActivity extends Activity {
 
         this.btJogar.setOnClickListener(this.handleJogarEvent);
         this.btTreinar.setOnClickListener(this.handleTreinarEvent);
-
-
     }
 
     private final View.OnClickListener handleJogarEvent = new View.OnClickListener() {

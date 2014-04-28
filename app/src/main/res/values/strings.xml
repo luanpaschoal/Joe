@@ -12,5 +12,6 @@
     <string name="modo_jogo">Modo de Jogo</string>
     <string name="ouvir">Ouvir</string>
     <string name="btProximaPalavra">Próxima Palavra</string>
+    <string name="title_activity_resultado">ResultadoActivity</string>
 
 </resources>

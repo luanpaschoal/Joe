@@ -19,18 +19,14 @@ import java.io.IOException;
 
 import br.rj.cefet.joe.app.R;
 
-public class PopulaTabelas extends SQLiteOpenHelper {
+public class PopulaTabelas {
 
     private final Context fContext;
 
     public PopulaTabelas(Context context) {
-        super(context, Constantes.NOME_DB, null, Constantes.DB_VERSION);
         fContext = context;
-
-        super.getWritableDatabase();
     }
 
-    @Override
     public void onCreate(SQLiteDatabase db) {
         //Get xml resource file
         Resources res = fContext.getResources();
@@ -69,7 +65,12 @@ public class PopulaTabelas extends SQLiteOpenHelper {
                 _xml.close();
             }
         }
-        super.close();
+//        super.close();
+    }
+
+    /* Update database to latest version */
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onCreate(db);
     }
 
     private void insereModoJogo(XmlResourceParser _xml, SQLiteDatabase db) {
@@ -104,7 +105,7 @@ public class PopulaTabelas extends SQLiteOpenHelper {
         _Values.put("dificuldade", _dificuldade);
         _Values.put("idNorma", _idNorma);
 
-        db.insert(Constantes.REGRA, null, _Values);
+        long insert = db.insert(Constantes.REGRA, null, _Values);
     }
 
     private void insereDicaRegra(XmlResourceParser _xml, SQLiteDatabase db) {
@@ -134,12 +135,6 @@ public class PopulaTabelas extends SQLiteOpenHelper {
         _Values.put("idModoJogo", _idModoJogo);
         _Values.put("idRegra", _idRegra);
 
-        db.insert(Constantes.PALAVRA, null, _Values);
-    }
-
-    /* Update database to latest version */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onCreate(db);
+        long insert = db.insert(Constantes.PALAVRA, null, _Values);
     }
 }

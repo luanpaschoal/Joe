@@ -9,20 +9,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class CriaTabelas extends SQLiteOpenHelper {
+public class CriaTabelas {
 
     private SQLiteDatabase db;
 
-    public CriaTabelas(Context context) {
-        super(context, Constantes.NOME_DB, null, Constantes.DB_VERSION);
-
-        super.getWritableDatabase();
+    public CriaTabelas(Context context, SQLiteDatabase database) {
+        db = database;
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate() {
         Log.w("CriandoDB", "Criando banco de dados. Versão: " + Constantes.DB_VERSION);
-        this.db = db;
 
         criaTabelaJogo();
         criaTabelaModoJogo();
@@ -30,8 +26,25 @@ public class CriaTabelas extends SQLiteOpenHelper {
         criaTabelaRegra();
         criaTabelaDicaRegra();
         criaTabelaPalavra();
+    }
 
-        super.close();
+    /* Update database to latest version */
+    public void onUpgrade(int oldVersion, int newVersion) {
+        //Crude update, make sure to implement a correct one when needed.
+
+        Log.w("UpgradingDB", "Atualizando banco de dados da versão: " + oldVersion + " para a: "
+                + newVersion + ", todos os dados antigos serão excluídos.");
+        apagaTabelas();
+        onCreate();
+    }
+
+    private void apagaTabelas() {
+        db.execSQL("DROP TABLE IF EXISTS Palavra");
+        db.execSQL("DROP TABLE IF EXISTS DicaRegra");
+        db.execSQL("DROP TABLE IF EXISTS Regra");
+        db.execSQL("DROP TABLE IF EXISTS Norma");
+        db.execSQL("DROP TABLE IF EXISTS ModoJogo");
+        db.execSQL("DROP TABLE IF EXISTS Jogo");
     }
 
     private void criaTabelaJogo() {
@@ -105,25 +118,5 @@ public class CriaTabelas extends SQLiteOpenHelper {
         } catch (Exception e) {
             Log.w("CriaTabelas", "Não foi possível criar a tabela Palavra. Erro:" + e.getMessage());
         }
-    }
-
-    /* Update database to latest version */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //Crude update, make sure to implement a correct one when needed.
-
-        Log.w("UpgradingDB", "Atualizando banco de dados da versão: " + oldVersion + " para a: "
-                + newVersion + ", todos os dados antigos serão excluídos.");
-        apagaTabelas(db);
-        onCreate(db);
-    }
-
-    private void apagaTabelas(SQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS Palavra");
-        db.execSQL("DROP TABLE IF EXISTS DicaRegra");
-        db.execSQL("DROP TABLE IF EXISTS Regra");
-        db.execSQL("DROP TABLE IF EXISTS Norma");
-        db.execSQL("DROP TABLE IF EXISTS ModoJogo");
-        db.execSQL("DROP TABLE IF EXISTS Jogo");
     }
 }

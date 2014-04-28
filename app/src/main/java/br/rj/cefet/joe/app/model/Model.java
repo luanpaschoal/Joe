@@ -21,12 +21,11 @@ import br.rj.cefet.joe.app.util.PopulaTabelas;
 
 public final class Model extends SQLiteOpenHelper {
     private SQLiteDatabase database;
+    private Context context;
 
     public Model(final Context ctx) {
         super(ctx, Constantes.NOME_DB, null, Constantes.DB_VERSION);
-
-        CriaTabelas criaTabelas = new CriaTabelas(ctx);
-        PopulaTabelas populaTabelas = new PopulaTabelas(ctx);
+        this.context = ctx;
 
         database = super.getWritableDatabase();
     }
@@ -34,6 +33,23 @@ public final class Model extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         this.database = sqLiteDatabase;
+
+        CriaTabelas criaTabelas = new CriaTabelas(context, sqLiteDatabase);
+        criaTabelas.onCreate();
+
+        PopulaTabelas populaTabelas = new PopulaTabelas(context);
+        populaTabelas.onCreate(sqLiteDatabase);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
+        this.database = sqLiteDatabase;
+
+        CriaTabelas criaTabelas = new CriaTabelas(context, sqLiteDatabase);
+        criaTabelas.onUpgrade(i,i2);
+
+        PopulaTabelas populaTabelas = new PopulaTabelas(context);
+        populaTabelas.onUpgrade(sqLiteDatabase, i, i2);
     }
 
     public void add(ContentValues data, String tabela) {
@@ -76,8 +92,11 @@ public final class Model extends SQLiteOpenHelper {
             ArrayList<Palavra> palavras = new ArrayList<Palavra>();
             Palavra palavra = new Palavra();
 //            final Cursor c = this.database.query(tabela, collumns, where, parametros, groupBy, having, orderby);
-            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.PALAVRA + " WHERE idModoJogo =? ORDER BY qtdVisualizacao ASC",
+
+            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.PALAVRA + " WHERE idModoJogo =? ORDER BY qtdVisualizacao ASC LIMIT 20",
                     new String[]{String.valueOf(idModoJogo)});
+//            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.REGRA, new String[]{});
+            int i = c.getCount();
 
             if (c != null) {
                 c.moveToFirst();
@@ -136,10 +155,5 @@ public final class Model extends SQLiteOpenHelper {
             Log.e("Model.getIdNorma", e.toString(), e);
             return 0;
         }
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
-        onCreate(sqLiteDatabase);
     }
 }
