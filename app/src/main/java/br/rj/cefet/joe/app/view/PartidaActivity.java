@@ -149,10 +149,8 @@ public class PartidaActivity extends Activity {
             if (event.getAction() == KeyEvent.ACTION_DOWN) {
                 switch (keyCode) {
                     case KeyEvent.KEYCODE_ENTER:
-//                        esconderTecladoVirtual();
-                        btProximaPalavra.setPressed(true);
+                        esconderTecladoVirtual();
                         return true;
-
                 }
             }
             return false;
