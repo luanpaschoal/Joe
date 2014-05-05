@@ -14,6 +14,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import br.rj.cefet.joe.app.model.entidade.Jogo;
 import br.rj.cefet.joe.app.model.entidade.Palavra;
 import br.rj.cefet.joe.app.util.Constantes;
 import br.rj.cefet.joe.app.util.CriaTabelas;
@@ -22,6 +23,7 @@ import br.rj.cefet.joe.app.util.PopulaTabelas;
 public final class Model extends SQLiteOpenHelper {
     private SQLiteDatabase database;
     private Context context;
+    private Object registroJogo;
 
     public Model(final Context ctx) {
         super(ctx, Constantes.NOME_DB, null, Constantes.DB_VERSION);
@@ -46,7 +48,7 @@ public final class Model extends SQLiteOpenHelper {
         this.database = sqLiteDatabase;
 
         CriaTabelas criaTabelas = new CriaTabelas(context, sqLiteDatabase);
-        criaTabelas.onUpgrade(i,i2);
+        criaTabelas.onUpgrade(i, i2);
 
         PopulaTabelas populaTabelas = new PopulaTabelas(context);
         populaTabelas.onUpgrade(sqLiteDatabase, i, i2);
@@ -93,7 +95,7 @@ public final class Model extends SQLiteOpenHelper {
 
 //            final Cursor c = this.database.query(tabela, collumns, where, parametros, groupBy, having, orderby);
 
-            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.PALAVRA + " WHERE idModoJogo =? ORDER BY qtdVisualizacao ASC LIMIT "+ Constantes.QTD_PALAVRAS_PARTIDA,
+            final Cursor c = database.rawQuery("SELECT * FROM " + Constantes.PALAVRA + " WHERE idModoJogo =? ORDER BY qtdVisualizacao ASC LIMIT " + Constantes.QTD_PALAVRAS_PARTIDA,
                     new String[]{String.valueOf(idModoJogo)});
 
             if (c != null) {
@@ -153,6 +155,64 @@ public final class Model extends SQLiteOpenHelper {
         } catch (SQLiteException e) {
             Log.e("Model.getIdNorma", e.toString(), e);
             return 0;
+        }
+    }
+
+    public void setPalavraVisualizada(String nomePalavra) {
+        database.execSQL("UPDATE " + Constantes.PALAVRA + " SET qtdVisualizacao = qtdVisualizacao + 1 WHERE nome = '" + nomePalavra + "'");
+    }
+
+    public String getDificuldade(int idRegra) {
+        String dificuldade = "";
+        try {
+            final Cursor c = database.rawQuery("SELECT dificuldade FROM " + Constantes.REGRA + " WHERE _id =?",
+                    new String[]{String.valueOf(idRegra)});
+
+            if (c != null) {
+                c.moveToFirst();
+                dificuldade = c.getString(0);
+                c.close();
+            }
+            return dificuldade;
+        } catch (SQLiteException e) {
+            Log.e("Model.getDificuldade", e.toString(), e);
+            return "";
+        }
+    }
+
+    public void updatePontuacao(int pontuacao) {
+        database.execSQL("UPDATE " + Constantes.JOGO + " SET pontuacaoTotal = pontuacaoTotal + "+ pontuacao);
+    }
+
+    public void updateAcertos(int qtdAcertos) {
+        database.execSQL("UPDATE " + Constantes.JOGO + " SET qtdAcertosTotal = qtdAcertosTotal + "+ qtdAcertos);
+    }
+
+    public void updateTempoTreino(int duracaoEmSegundos) {
+        database.execSQL("UPDATE " + Constantes.JOGO + " SET tempoTotalTreino = tempoTotalTreino + "+ duracaoEmSegundos);
+    }
+
+    public Jogo getRegistroJogo() {
+        Log.d("Model", "getRegistroJogo()");
+        try {
+            Jogo jogo = new Jogo();
+
+            final Cursor c = database.rawQuery("SELECT pontuacaoTotal, tempoTotalTreino, qtdAcertosTotal FROM " + Constantes.JOGO,
+                    null);
+
+            if (c != null) {
+                c.moveToFirst();
+                if(c.isAfterLast() == false) {
+                    jogo.setPontuacaoTotal(c.getInt(0));
+                    jogo.setTempoTotalTreino(c.getInt(1));
+                    jogo.setQtdAcertosTotal(c.getInt(2));
+                }
+                c.close();
+            }
+            return jogo;
+        } catch (SQLiteException e) {
+            Log.e("Model.getRegistroJogo", e.toString(), e);
+            return null;
         }
     }
 }

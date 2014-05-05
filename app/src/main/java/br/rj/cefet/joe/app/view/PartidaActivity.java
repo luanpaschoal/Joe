@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -18,6 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.rj.cefet.joe.app.R;
 import br.rj.cefet.joe.app.controller.Controller;
@@ -43,14 +48,17 @@ public class PartidaActivity extends Activity {
     private int modoJogo;
     //auxiliar para avançar na lista de palavra
     private int posicaoAtual = 0;
-    private int qtdErros = 0;
-    private int qtdAcertos = 0;
+    private int qtdErrosAcentuacao = 0;
+    private int qtdAcertosAcentuacao = 0;
+    private int qtdErrosHifen = 0;
+    private int qtdAcertosHifen = 0;
+    private int pontuacao = 0;
     private boolean isPermitidoDica;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_partida_view);
+        setContentView(R.layout.activity_partida);
 
         this.controller = new Controller(PartidaActivity.this);
 
@@ -62,6 +70,8 @@ public class PartidaActivity extends Activity {
         this.tvQtdErros = (TextView) this.findViewById(R.id.tvQtdErros);
         this.tvQtdAcertos = (TextView) this.findViewById(R.id.tvQtdAcertos);
 
+        cronometro = new Chronometer(this);
+
         Bundle extras = getIntent().getExtras();
         modoJogo = extras.getInt("MODO_ESCOLHIDO");
         palavras = controller.getPalavras(modoJogo);
@@ -72,6 +82,7 @@ public class PartidaActivity extends Activity {
 
         this.btOuvir.setOnClickListener(this.handleOuvirEvent);
         this.etPalavraDigitada.setOnClickListener(this.handlePalavraDigitadaEvent);
+        this.etPalavraDigitada.setOnKeyListener(this.handleEnterApertadoEvent);
         this.btProximaPalavra.setOnClickListener(this.handleProximaPalavraEvent);
     }
 
@@ -97,12 +108,14 @@ public class PartidaActivity extends Activity {
         new CountDownTimer(Constantes.TEMPO_PARTIDA, Constantes.TEMPO_INTERVALO) {
 
             public void onTick(long millisUntilFinished) {
-                tvContagemRegressiva.setText(millisUntilFinished / 1000 + " segundos restantes.");
+                tvContagemRegressiva.setText(millisUntilFinished / 1000 + " segundos restantes");
             }
 
             public void onFinish() {
                 tvContagemRegressiva.setText("Acabou o tempo!");
-                terminarPartida();
+                if (PartidaActivity.this.hasWindowFocus()) {
+                    terminarPartida();
+                }
             }
         }.start();
     }
@@ -130,59 +143,104 @@ public class PartidaActivity extends Activity {
         }
     };
 
+    private final View.OnKeyListener handleEnterApertadoEvent = new View.OnKeyListener() {
+        @Override
+        public boolean onKey(View view, int keyCode, KeyEvent event) {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_ENTER:
+//                        esconderTecladoVirtual();
+                        btProximaPalavra.setPressed(true);
+                        return true;
+
+                }
+            }
+            return false;
+        }
+    };
+
+    private void esconderTecladoVirtual() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(etPalavraDigitada.getWindowToken(), 0);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
     private final View.OnClickListener handleProximaPalavraEvent = new View.OnClickListener() {
         @Override
         public void onClick(final View view) {
             Log.d("MainActivity.handleProximaPalavraEvent", "botão próxima palavra acionado");
             verificarPalavraDigitada();
             etPalavraDigitada.setText("");
-            carregarProximaPalavra();
+            prepararProximaPalavra();
         }
 
         private void verificarPalavraDigitada() {
-            int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
-            int idNormaPalavra = controller.getIdNorma(idRegra);
-            String palavraAtual = palavras.get(posicaoAtual).getNome();
-            String palavraDigitada = etPalavraDigitada.getText().toString();
+            if (posicaoAtual < Constantes.QTD_PALAVRAS_PARTIDA) {
+                int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
+                int idNormaPalavra = controller.getIdNorma(idRegra);
+                String palavraAtual = palavras.get(posicaoAtual).getNome();
+                String palavraDigitada = etPalavraDigitada.getText().toString();
 
-            if (palavraAtual.equalsIgnoreCase(palavraDigitada)) {
-                alterarAnimacaoBackgroud(R.drawable.borda_acerto);
-                qtdAcertos++;
-                tvQtdAcertos.setText(String.valueOf(qtdAcertos));
-                addQtdAcertoNorma(idNormaPalavra, qtdAcertos);
-            } else {
-                mostraDica(isPermitidoDica);
-                alterarAnimacaoBackgroud(R.drawable.borda_erro);
-                qtdErros++;
-                tvQtdErros.setText(String.valueOf(qtdErros));
-                addQtdErroNorma(idNormaPalavra, qtdErros);
+                if (palavraDigitada.equalsIgnoreCase(palavraAtual)) {
+                    alterarAnimacaoBackgroud(R.drawable.borda_acerto);
+
+                    addQtdAcertoNorma(idNormaPalavra);
+
+                    addPontuacao(controller.getDificuldade(idRegra), modoJogo);
+                    tvQtdAcertos.setText(String.valueOf(qtdAcertosAcentuacao + qtdAcertosHifen));
+                } else {
+                    mostrarPalavraCorreta(palavraAtual);
+                    alterarAnimacaoBackgroud(R.drawable.borda_erro);
+
+                    addQtdErroNorma(idNormaPalavra);
+                    tvQtdErros.setText(String.valueOf(qtdErrosAcentuacao + qtdErrosHifen));
+                }
+                mostrarDica(isPermitidoDica);
             }
         }
 
-        private void addQtdAcertoNorma(int idNormaPalavra, int qtdAcertos) {
+        private void addQtdAcertoNorma(int idNormaPalavra) {
             switch (idNormaPalavra) {
                 case Constantes.ID_HIFEN:
-                    controller.setQtdAcertosHifen(qtdAcertos);
+                    qtdAcertosHifen++;
                     break;
                 case Constantes.ID_ACENTUACAO:
-                    controller.setQtdAcertosAcentuacao(qtdAcertos);
+                    qtdAcertosAcentuacao++;
                     break;
             }
 
         }
 
-        private void addQtdErroNorma(int idNormaPalavra, int qtdErros) {
+        private void addPontuacao(String dificuldade, int modoJogo) {
+            switch (modoJogo) {
+                case Constantes.ID_JOGAR:
+                    if (Constantes.REGRA_FACIL.equalsIgnoreCase(dificuldade)) {
+                        pontuacao += Constantes.PONTOS_FACIL;
+                    } else if (Constantes.REGRA_DIFICIL.equalsIgnoreCase(dificuldade)) {
+                        pontuacao += Constantes.PONTOS_DIFICIL;
+                    }
+                    break;
+            }
+        }
+
+        private void addQtdErroNorma(int idNormaPalavra) {
             switch (idNormaPalavra) {
                 case Constantes.ID_HIFEN:
-                    controller.setQtdErrosHifen(qtdErros);
+                    qtdErrosHifen++;
                     break;
                 case Constantes.ID_ACENTUACAO:
-                    controller.setQtdErrosAcentuacao(qtdErros);
+                    qtdErrosAcentuacao++;
                     break;
             }
         }
 
-        private void mostraDica(boolean isPermitidoDica) {
+        private void mostrarPalavraCorreta(String palavraAtual) {
+            if (isPermitidoDica) {
+                Mensagem.show(PartidaActivity.this, "O correto é: " + palavraAtual, Constantes.AVISO);
+            }
+        }
+
+        private void mostrarDica(boolean isPermitidoDica) {
             if (isPermitidoDica) {
                 int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
                 String texto = controller.getDica(idRegra);
@@ -199,7 +257,7 @@ public class PartidaActivity extends Activity {
             tela.startAnimation(animacaoBorda);
         }
 
-        private void carregarProximaPalavra() {
+        private void prepararProximaPalavra() {
             posicaoAtual++;
             if (posicaoAtual == Constantes.QTD_PALAVRAS_PARTIDA) {
                 terminarPartida();
@@ -217,6 +275,8 @@ public class PartidaActivity extends Activity {
             Uri myUri = Uri.parse("android.resource://br.rj.cefet.joe.app/raw/" + nomeArquivo);
             mediaPlayer.setDataSource(PartidaActivity.this, myUri);
             mediaPlayer.prepare();
+
+            controller.setPalavraVisualizada(getPalavras().get(posicaoAtual).getNome());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -227,10 +287,11 @@ public class PartidaActivity extends Activity {
             mediaPlayer.start();
         } catch (Exception e) {
             e.printStackTrace();
+            Log.e("tocarAudio", e.getMessage());
         }
     }
 
-    private void iniciarCronometro(){
+    private void iniciarCronometro() {
         cronometro.setBase(SystemClock.elapsedRealtime());
 
         cronometro.start();
@@ -240,9 +301,30 @@ public class PartidaActivity extends Activity {
         cronometro.stop();
         long elapsedMillis = SystemClock.elapsedRealtime() - cronometro.getBase();
         int duracaoEmSegundos = (int) elapsedMillis / 1000;
-        controller.setDuracao(duracaoEmSegundos);
 
-        controller.mostrarResultado();
+        this.finish();
+
+        Map<String, Integer> parametros = new HashMap<String, Integer>();
+        parametros.put("ERROS_HIFEN", qtdErrosHifen);
+        parametros.put("ERROS_ACENTUACAO", qtdErrosAcentuacao);
+        parametros.put("ACERTOS_HIFEN", qtdAcertosHifen);
+        parametros.put("ACERTOS_ACENTUACAO", qtdAcertosAcentuacao);
+        parametros.put("DURACAO", duracaoEmSegundos);
+
+        registrarHistorico(pontuacao, duracaoEmSegundos, qtdAcertosAcentuacao + qtdAcertosHifen);
+        controller.mostrarResultado(parametros);
+    }
+
+    private void registrarHistorico(int pontuacao, int duracaoEmSegundos, int qtdAcertos) {
+        switch (modoJogo) {
+            case Constantes.ID_JOGAR:
+                controller.addPontuacao(pontuacao);
+                controller.addAcertos(qtdAcertos);
+                break;
+            case Constantes.ID_TREINAR:
+                controller.addTempoTreino(duracaoEmSegundos);
+                break;
+        }
     }
 
     @Override

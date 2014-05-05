@@ -5,15 +5,15 @@ package br.rj.cefet.joe.app.model.entidade;
  */
 public class Jogo {
     int pontuacaoTotal;
-    int tempoTotal;
+    int tempoTotalTreino;
     int qtdAcertosTotal;
 
     public Jogo() {
     }
 
-    public Jogo(int pontuacaoTotal, int tempoTotal, int qtdAcertosTotal) {
+    public Jogo(int pontuacaoTotal, int tempoTotalTreino, int qtdAcertosTotal) {
         this.pontuacaoTotal = pontuacaoTotal;
-        this.tempoTotal = tempoTotal;
+        this.tempoTotalTreino = tempoTotalTreino;
         this.qtdAcertosTotal = qtdAcertosTotal;
     }
 
@@ -25,12 +25,12 @@ public class Jogo {
         this.pontuacaoTotal = pontuacaoTotal;
     }
 
-    public int getTempoTotal() {
-        return tempoTotal;
+    public int getTempoTotalTreino() {
+        return tempoTotalTreino;
     }
 
-    public void setTempoTotal(int tempoTotal) {
-        this.tempoTotal = tempoTotal;
+    public void setTempoTotalTreino(int tempoTotalTreino) {
+        this.tempoTotalTreino = tempoTotalTreino;
     }
 
     public int getQtdAcertosTotal() {

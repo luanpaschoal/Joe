@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import br.rj.cefet.joe.app.model.Model;
+import br.rj.cefet.joe.app.model.entidade.Jogo;
 import br.rj.cefet.joe.app.model.entidade.Palavra;
+import br.rj.cefet.joe.app.view.MainActivity;
 import br.rj.cefet.joe.app.view.PartidaActivity;
 import br.rj.cefet.joe.app.view.ResultadoActivity;
 
@@ -15,14 +18,9 @@ import br.rj.cefet.joe.app.view.ResultadoActivity;
  * Created by Luan on 12/04/2014.
  */
 
-public class Controller extends Activity {
+public class Controller {
     private Model model;
     private Context ctx;
-    private int duracao;
-    private int qtdErrosHifen;
-    private int qtdAcertosHifen;
-    private int qtdAcertosAcentuacao;
-    private int qtdErrosAcentuacao;
 
     public Controller(Context app_context) {
         model = new Model(app_context);
@@ -39,13 +37,13 @@ public class Controller extends Activity {
         return model.getPalavras(idModoJogo);
     }
 
-    public void mostrarResultado() {
+    public void mostrarResultado(Map<String, Integer> parametros) {
         Intent it = new Intent(ctx, ResultadoActivity.class);
-        it.putExtra("DURACAO", duracao);
-        it.putExtra("ERROS_HIFEN", qtdErrosHifen);
-        it.putExtra("ACERTOS_HIFEN", qtdAcertosHifen);
-        it.putExtra("ACERTOS_ACENTUACAO", qtdAcertosAcentuacao);
-        it.putExtra("ERROS_ACENTUACAO", qtdErrosAcentuacao);
+        it.putExtra("ERROS_HIFEN", parametros.get("ERROS_HIFEN"));
+        it.putExtra("ERROS_ACENTUACAO", parametros.get("ERROS_ACENTUACAO"));
+        it.putExtra("ACERTOS_HIFEN", parametros.get("ACERTOS_HIFEN"));
+        it.putExtra("ACERTOS_ACENTUACAO", parametros.get("ACERTOS_ACENTUACAO"));
+        it.putExtra("DURACAO", parametros.get("DURACAO"));
         ctx.startActivity(it);
     }
 
@@ -64,43 +62,35 @@ public class Controller extends Activity {
         return model.getIdNorma(idRegra);
     }
 
-    public int getDuracao() {
-        return duracao;
+    public String getDificuldade(int idRegra) {
+        return model.getDificuldade(idRegra);
     }
 
-    public void setDuracao(int duracao) {
-        this.duracao = duracao;
+    public void setPalavraVisualizada(String nomePalavra) {
+        model.setPalavraVisualizada(nomePalavra);
     }
 
-    public int getQtdErrosHifen() {
-        return qtdErrosHifen;
+    public void addPontuacao(int pontuacao) {
+        model.updatePontuacao(pontuacao);
     }
 
-    public void setQtdErrosHifen(int qtdErrosHifen) {
-        this.qtdErrosHifen = qtdErrosHifen;
+    public void addAcertos(int qtdAcertos) {
+        model.updateAcertos(qtdAcertos);
     }
 
-    public int getQtdAcertosHifen() {
-        return qtdAcertosHifen;
+    public void addTempoTreino(int duracaoEmSegundos) {
+        model.updateTempoTreino(duracaoEmSegundos);
     }
 
-    public void setQtdAcertosHifen(int qtdAcertosHifen) {
-        this.qtdAcertosHifen = qtdAcertosHifen;
-    }
-
-    public int getQtdAcertosAcentuacao() {
-        return qtdAcertosAcentuacao;
-    }
-
-    public void setQtdAcertosAcentuacao(int qtdAcertosAcentuacao) {
-        this.qtdAcertosAcentuacao = qtdAcertosAcentuacao;
-    }
-
-    public int getQtdErrosAcentuacao() {
-        return qtdErrosAcentuacao;
-    }
-
-    public void setQtdErrosAcentuacao(int qtdErrosAcentuacao) {
-        this.qtdErrosAcentuacao = qtdErrosAcentuacao;
+    public Jogo getRegistroJogo() {
+        if (model.getRegistroJogo() == null) {
+            Jogo jogo = new Jogo();
+            jogo.setPontuacaoTotal(0);
+            jogo.setTempoTotalTreino(0);
+            jogo.setQtdAcertosTotal(0);
+            return jogo;
+        } else {
+            return model.getRegistroJogo();
+        }
     }
 }

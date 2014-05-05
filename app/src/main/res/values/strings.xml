@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Jogo Ortográfico Educacional</string>
+    <string name="app_name_icon">Jogo Ortográfico</string>
     <string name="treinar">Treinar</string>
     <string name="jogar">Jogar</string>
     <string name="hello_world">Hello world!</string>
@@ -12,6 +13,6 @@
     <string name="modo_jogo">Modo de Jogo</string>
     <string name="ouvir">Ouvir</string>
     <string name="btProximaPalavra">Próxima Palavra</string>
-    <string name="title_activity_resultado">ResultadoActivity</string>
+    <string name="title_activity_resultado">Resultado</string>
 
 </resources>

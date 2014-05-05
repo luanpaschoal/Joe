@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal|top"
-        android:src="@drawable/logo"
+        android:src="@drawable/ic_logo"
         android:layout_marginBottom="40dp" />
 
     <Button
@@ -39,5 +39,62 @@
         android:clickable="true"
         android:textStyle="bold"
         android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Total de acertos:"
+        android:id="@+id/textView"
+        android:layout_gravity="left"
+        android:layout_marginTop="50dp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tvTotalAcertos"
+        android:layout_gravity="center_horizontal|left"
+        android:textColor="#ff33b5e5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Pontuação:"
+        android:id="@+id/textView2"
+        android:layout_gravity="left"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tvPontuacao"
+        android:layout_gravity="left"
+        android:textColor="#ff33b5e5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tempo dedicado no treino:"
+        android:id="@+id/textView3"
+        android:layout_gravity="left"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tvTempoTotalTreino"
+        android:layout_gravity="left"
+        android:textColor="#2ae64c" />
 
 </LinearLayout>

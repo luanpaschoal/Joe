@@ -40,7 +40,9 @@ public class PopulaTabelas {
                     if ((eventType == XmlPullParser.START_TAG)) {
                         String tagXml = _xml.getName();
 
-                        if (tagXml.equals(Constantes.MODO_JOGO)) {
+                        if (tagXml.equals(Constantes.JOGO)) {
+                            insereJogo(_xml, db);
+                        } else if (tagXml.equals(Constantes.MODO_JOGO)) {
                             insereModoJogo(_xml, db);
                         } else if (tagXml.equals(Constantes.NORMA)) {
                             insereNorma(_xml, db);
@@ -71,6 +73,19 @@ public class PopulaTabelas {
     /* Update database to latest version */
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onCreate(db);
+    }
+
+    private void insereJogo(XmlResourceParser _xml, SQLiteDatabase db) {
+        String _pontuacaoTotal = _xml.getAttributeValue(null, "pontuacaoTotal");
+        String _qtdAcertosTotal = _xml.getAttributeValue(null, "qtdAcertosTotal");
+        String _tempoTotalTreino = _xml.getAttributeValue(null, "tempoTotalTreino");
+
+        ContentValues _Values = new ContentValues();
+        _Values.put("pontuacaoTotal", _pontuacaoTotal);
+        _Values.put("qtdAcertosTotal", _qtdAcertosTotal);
+        _Values.put("tempoTotalTreino", _tempoTotalTreino);
+
+        db.insert(Constantes.JOGO, null, _Values);
     }
 
     private void insereModoJogo(XmlResourceParser _xml, SQLiteDatabase db) {

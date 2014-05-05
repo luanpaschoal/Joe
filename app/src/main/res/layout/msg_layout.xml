@@ -13,6 +13,7 @@
         android:drawablePadding="2dp"
         android:gravity="center_vertical"
         android:text="@null"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>

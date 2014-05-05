@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.rj.cefet.joe.app" >
+    package="br.rj.cefet.joe.app">
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label="@string/app_name" >
+        android:icon="@drawable/ic_logo"
+        android:label="@string/app_name_icon" >
         <activity
             android:name="br.rj.cefet.joe.app.view.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +18,12 @@
         </activity>
         <activity
             android:name="br.rj.cefet.joe.app.view.PartidaActivity"
-            android:label="@string/title_activity_partida_view" >
-        </activity>
+            android:label="@string/title_activity_partida_view"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="br.rj.cefet.joe.app.view.ResultadoActivity"
-            android:label="@string/title_activity_resultado" >
-        </activity>
+            android:label="@string/title_activity_resultado"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -52,7 +52,7 @@ public class CriaTabelas {
             db.execSQL("CREATE TABLE IF NOT EXISTS Jogo (\n" +
                     "_id INTEGER PRIMARY KEY, \n" +
                     "pontuacaoTotal INTEGER, \n" +
-                    "tempoTotal INTEGER, \n" +
+                    "tempoTotalTreino INTEGER, \n" +
                     "qtdAcertosTotal INTEGER);");
         } catch (Exception e) {
             Log.w("CriaTabelas", "Não foi possível criar a tabela Jogo. Erro:" + e.getMessage());
