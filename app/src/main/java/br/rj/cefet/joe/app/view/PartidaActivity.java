@@ -3,7 +3,7 @@ package br.rj.cefet.joe.app.view;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -185,20 +184,41 @@ public class PartidaActivity extends Activity {
             String palavraDigitada = etPalavraDigitada.getText().toString();
 
             if (palavraDigitada.equalsIgnoreCase(palavraAtual)) {
-                alterarAnimacaoBackgroud(R.drawable.borda_acerto);
-
+                animarAcerto();
                 addQtdAcertoNorma(idNormaPalavra);
 
                 addPontuacao(controller.getDificuldade(idRegra), modoJogo);
                 tvQtdAcertos.setText(String.valueOf(qtdAcertosAcentuacao + qtdAcertosHifen));
             } else {
                 mostrarPalavraCorreta(palavraAtual);
-                alterarAnimacaoBackgroud(R.drawable.borda_erro);
+                animarErro();
 
                 addQtdErroNorma(idNormaPalavra);
                 tvQtdErros.setText(String.valueOf(qtdErrosAcentuacao + qtdErrosHifen));
             }
             mostrarDica(isPermitidoDica);
+        }
+    }
+
+    private void animarAcerto() {
+        switch (modoJogo) {
+            case Constantes.ID_JOGAR:
+                piscaBackground(R.drawable.efeito_pisca_borda_acerto);
+                break;
+            case Constantes.ID_TREINAR:
+                animarBackgroudTreino(R.drawable.borda_acerto);
+                break;
+        }
+    }
+
+    private void animarErro() {
+        switch (modoJogo) {
+            case Constantes.ID_JOGAR:
+                piscaBackground(R.drawable.efeito_pisca_borda_erro);
+                break;
+            case Constantes.ID_TREINAR:
+                animarBackgroudTreino(R.drawable.borda_erro);
+                break;
         }
     }
 
@@ -254,7 +274,7 @@ public class PartidaActivity extends Activity {
 
                 @Override
                 public void onDismiss(DialogInterface dialogInterface) {
-                    voltarBackgroundNormal();
+                    voltarBackgroundTreinoNormal();
                     prepararProximaPalavra();
                     tocarAudio();
                 }
@@ -268,20 +288,27 @@ public class PartidaActivity extends Activity {
         }
     }
 
-    private void alterarAnimacaoBackgroud(int borda) {
+    private void animarBackgroudTreino(int borda) {
         RelativeLayout tela = (RelativeLayout) findViewById(R.id.rlTelaPartida);
         tela.setBackgroundResource(borda);
 
         Animation animacaoBorda = AnimationUtils.loadAnimation(PartidaActivity.this, R.anim.efeito_alpha);
         tela.startAnimation(animacaoBorda);
-
     }
 
-    private void voltarBackgroundNormal(){
+    private void voltarBackgroundTreinoNormal() {
         RelativeLayout tela = (RelativeLayout) findViewById(R.id.rlTelaPartida);
         tela.setBackgroundResource(R.drawable.borda_normal);
         Animation animacaoBorda = AnimationUtils.loadAnimation(PartidaActivity.this, R.anim.efeito_alpha_background_normal);
         tela.startAnimation(animacaoBorda);
+    }
+
+    private void piscaBackground(int efeito) {
+        RelativeLayout tela = (RelativeLayout) findViewById(R.id.rlTelaPartida);
+        tela.setBackgroundResource(efeito);
+
+        AnimationDrawable animation = (AnimationDrawable) tela.getBackground();
+        animation.start();
     }
 
     private void prepararProximaPalavra() {

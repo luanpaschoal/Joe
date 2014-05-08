@@ -58,7 +58,8 @@
         android:textColor="@android:color/black"
         android:hint="  Digite a palavra aqui"
         android:background="@drawable/borda_azul"
-        android:textColorHint="@android:color/darker_gray" />
+        android:textColorHint="@android:color/darker_gray"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="match_parent"
@@ -81,9 +82,10 @@
         android:text="Erros:"
         android:id="@+id/textView"
         android:textColor="#ffcc0001"
-        android:layout_above="@+id/tvQtdErros"
+        android:layout_below="@+id/btVerificarPalavra"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
