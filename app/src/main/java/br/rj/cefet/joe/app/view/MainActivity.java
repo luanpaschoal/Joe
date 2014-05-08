@@ -2,7 +2,6 @@ package br.rj.cefet.joe.app.view;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,7 +49,7 @@ public class MainActivity extends Activity {
     private final View.OnClickListener handleJogarEvent = new View.OnClickListener() {
         @Override
         public void onClick(final View view) {
-            Log.d("MainActivity.handleJogarEvent", "botão jogar acionado");
+//            Log.d("MainActivity.handleJogarEvent", "botão jogar acionado");
 
             controller.iniciarPartida(Constantes.ID_JOGAR);
         }
@@ -59,7 +58,7 @@ public class MainActivity extends Activity {
     private final View.OnClickListener handleTreinarEvent = new View.OnClickListener() {
         @Override
         public void onClick(final View view) {
-            Log.d("MainActivity.handleTreinarEvent", "botão treinar acionado");
+//            Log.d("MainActivity.handleTreinarEvent", "botão treinar acionado");
 
             controller.iniciarPartida(Constantes.ID_TREINAR);
         }

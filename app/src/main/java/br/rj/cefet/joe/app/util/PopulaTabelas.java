@@ -9,8 +9,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -59,9 +57,9 @@ public class PopulaTabelas {
             }
             //Catch errors
             catch (XmlPullParserException e) {
-                Log.e("XmlPullParserException", e.getMessage(), e);
+//                Log.e("XmlPullParserException", e.getMessage(), e);
             } catch (IOException e) {
-                Log.e("IOException", e.getMessage(), e);
+//                Log.e("IOException", e.getMessage(), e);
             } finally {
                 //Close the xml file
                 _xml.close();

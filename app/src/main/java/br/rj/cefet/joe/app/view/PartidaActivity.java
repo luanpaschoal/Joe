@@ -1,18 +1,21 @@
 package br.rj.cefet.joe.app.view;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -36,13 +39,13 @@ public class PartidaActivity extends Activity {
     private TextView tvContagemRegressiva;
     private Button btOuvir;
     private EditText etPalavraDigitada;
-    private Button btProximaPalavra;
+    private Button btVerificarPalavra;
     private TextView tvQtdErros;
     private TextView tvQtdAcertos;
 
     private Controller controller;
-    private ArrayList<Palavra> palavras = new ArrayList<Palavra>();
-    MediaPlayer mediaPlayer = new MediaPlayer();
+    private ArrayList<Palavra> palavras;
+    MediaPlayer mediaPlayer;
     private Chronometer cronometro;
 
     private int modoJogo;
@@ -61,12 +64,14 @@ public class PartidaActivity extends Activity {
         setContentView(R.layout.activity_partida);
 
         this.controller = new Controller(PartidaActivity.this);
+        this.palavras = new ArrayList<Palavra>();
+        this.mediaPlayer = new MediaPlayer();
 
         this.tvModoJogo = (TextView) this.findViewById(R.id.tvModoJogo);
         this.tvContagemRegressiva = (TextView) this.findViewById(R.id.tvContagemRegressiva);
         this.btOuvir = (Button) this.findViewById(R.id.btOuvir);
         this.etPalavraDigitada = (EditText) this.findViewById(R.id.etPalavraDigitada);
-        this.btProximaPalavra = (Button) this.findViewById(R.id.btProximaPalavra);
+        this.btVerificarPalavra = (Button) this.findViewById(R.id.btVerificarPalavra);
         this.tvQtdErros = (TextView) this.findViewById(R.id.tvQtdErros);
         this.tvQtdAcertos = (TextView) this.findViewById(R.id.tvQtdAcertos);
 
@@ -81,9 +86,8 @@ public class PartidaActivity extends Activity {
         iniciarCronometro();
 
         this.btOuvir.setOnClickListener(this.handleOuvirEvent);
-        this.etPalavraDigitada.setOnClickListener(this.handlePalavraDigitadaEvent);
         this.etPalavraDigitada.setOnKeyListener(this.handleEnterApertadoEvent);
-        this.btProximaPalavra.setOnClickListener(this.handleProximaPalavraEvent);
+        this.btVerificarPalavra.setOnClickListener(this.handleVerificaPalavraEvent);
     }
 
     private void ajustaTela(int modoJogo) {
@@ -130,16 +134,8 @@ public class PartidaActivity extends Activity {
     private final View.OnClickListener handleOuvirEvent = new View.OnClickListener() {
         @Override
         public void onClick(final View view) {
-            Log.d("MainActivity.handleOuvirEvent", "botão ouvir acionado");
+//            Log.d("MainActivity.handleOuvirEvent", "botão ouvir acionado");
             tocarAudio();
-        }
-    };
-
-    private final View.OnClickListener handlePalavraDigitadaEvent = new View.OnClickListener() {
-        @Override
-        public void onClick(final View view) {
-            Log.d("MainActivity.handlePalavraDigitadaEvent", "botão palavra digitada acionado");
-            etPalavraDigitada.setText("");
         }
     };
 
@@ -150,6 +146,11 @@ public class PartidaActivity extends Activity {
                 switch (keyCode) {
                     case KeyEvent.KEYCODE_ENTER:
                         esconderTecladoVirtual();
+                        verificarPalavraDigitada();
+                        if (modoJogo == Constantes.ID_JOGAR) {
+                            prepararProximaPalavra();
+                            tocarAudio();
+                        }
                         return true;
                 }
             }
@@ -163,116 +164,146 @@ public class PartidaActivity extends Activity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
-    private final View.OnClickListener handleProximaPalavraEvent = new View.OnClickListener() {
+    private final View.OnClickListener handleVerificaPalavraEvent = new View.OnClickListener() {
         @Override
         public void onClick(final View view) {
-            Log.d("MainActivity.handleProximaPalavraEvent", "botão próxima palavra acionado");
+//            Log.d("MainActivity.handleVerificaPalavraEvent", "botão próxima palavra acionado");
             verificarPalavraDigitada();
-            etPalavraDigitada.setText("");
-            prepararProximaPalavra();
-        }
 
-        private void verificarPalavraDigitada() {
-            if (posicaoAtual < Constantes.QTD_PALAVRAS_PARTIDA) {
-                int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
-                int idNormaPalavra = controller.getIdNorma(idRegra);
-                String palavraAtual = palavras.get(posicaoAtual).getNome();
-                String palavraDigitada = etPalavraDigitada.getText().toString();
-
-                if (palavraDigitada.equalsIgnoreCase(palavraAtual)) {
-                    alterarAnimacaoBackgroud(R.drawable.borda_acerto);
-
-                    addQtdAcertoNorma(idNormaPalavra);
-
-                    addPontuacao(controller.getDificuldade(idRegra), modoJogo);
-                    tvQtdAcertos.setText(String.valueOf(qtdAcertosAcentuacao + qtdAcertosHifen));
-                } else {
-                    mostrarPalavraCorreta(palavraAtual);
-                    alterarAnimacaoBackgroud(R.drawable.borda_erro);
-
-                    addQtdErroNorma(idNormaPalavra);
-                    tvQtdErros.setText(String.valueOf(qtdErrosAcentuacao + qtdErrosHifen));
-                }
-                mostrarDica(isPermitidoDica);
-            }
-        }
-
-        private void addQtdAcertoNorma(int idNormaPalavra) {
-            switch (idNormaPalavra) {
-                case Constantes.ID_HIFEN:
-                    qtdAcertosHifen++;
-                    break;
-                case Constantes.ID_ACENTUACAO:
-                    qtdAcertosAcentuacao++;
-                    break;
-            }
-
-        }
-
-        private void addPontuacao(String dificuldade, int modoJogo) {
-            switch (modoJogo) {
-                case Constantes.ID_JOGAR:
-                    if (Constantes.REGRA_FACIL.equalsIgnoreCase(dificuldade)) {
-                        pontuacao += Constantes.PONTOS_FACIL;
-                    } else if (Constantes.REGRA_DIFICIL.equalsIgnoreCase(dificuldade)) {
-                        pontuacao += Constantes.PONTOS_DIFICIL;
-                    }
-                    break;
-            }
-        }
-
-        private void addQtdErroNorma(int idNormaPalavra) {
-            switch (idNormaPalavra) {
-                case Constantes.ID_HIFEN:
-                    qtdErrosHifen++;
-                    break;
-                case Constantes.ID_ACENTUACAO:
-                    qtdErrosAcentuacao++;
-                    break;
-            }
-        }
-
-        private void mostrarPalavraCorreta(String palavraAtual) {
-            if (isPermitidoDica) {
-                Mensagem.show(PartidaActivity.this, "O correto é: " + palavraAtual, Constantes.AVISO);
-            }
-        }
-
-        private void mostrarDica(boolean isPermitidoDica) {
-            if (isPermitidoDica) {
-                int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
-                String texto = controller.getDica(idRegra);
-
-                Mensagem.show(PartidaActivity.this, texto, Constantes.INFORMACAO);
-            }
-        }
-
-        private void alterarAnimacaoBackgroud(int borda) {
-            RelativeLayout tela = (RelativeLayout) findViewById(R.id.rlTelaPartida);
-            tela.setBackgroundResource(borda);
-
-            Animation animacaoBorda = AnimationUtils.loadAnimation(PartidaActivity.this, R.anim.efeito_alpha);
-            tela.startAnimation(animacaoBorda);
-        }
-
-        private void prepararProximaPalavra() {
-            posicaoAtual++;
-            if (posicaoAtual == Constantes.QTD_PALAVRAS_PARTIDA) {
-                terminarPartida();
-            } else {
-                mediaPlayer.reset();
-                prepararAudio();
+            if (modoJogo == Constantes.ID_JOGAR) {
+                prepararProximaPalavra();
+                tocarAudio();
             }
         }
     };
 
+    private void verificarPalavraDigitada() {
+        if (posicaoAtual < Constantes.QTD_PALAVRAS_PARTIDA) {
+            int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
+            int idNormaPalavra = controller.getIdNorma(idRegra);
+            String palavraAtual = palavras.get(posicaoAtual).getNome();
+            String palavraDigitada = etPalavraDigitada.getText().toString();
+
+            if (palavraDigitada.equalsIgnoreCase(palavraAtual)) {
+                alterarAnimacaoBackgroud(R.drawable.borda_acerto);
+
+                addQtdAcertoNorma(idNormaPalavra);
+
+                addPontuacao(controller.getDificuldade(idRegra), modoJogo);
+                tvQtdAcertos.setText(String.valueOf(qtdAcertosAcentuacao + qtdAcertosHifen));
+            } else {
+                mostrarPalavraCorreta(palavraAtual);
+                alterarAnimacaoBackgroud(R.drawable.borda_erro);
+
+                addQtdErroNorma(idNormaPalavra);
+                tvQtdErros.setText(String.valueOf(qtdErrosAcentuacao + qtdErrosHifen));
+            }
+            mostrarDica(isPermitidoDica);
+        }
+    }
+
+    private void addQtdAcertoNorma(int idNormaPalavra) {
+        switch (idNormaPalavra) {
+            case Constantes.ID_HIFEN:
+                qtdAcertosHifen++;
+                break;
+            case Constantes.ID_ACENTUACAO:
+                qtdAcertosAcentuacao++;
+                break;
+        }
+
+    }
+
+    private void addPontuacao(String dificuldade, int modoJogo) {
+        switch (modoJogo) {
+            case Constantes.ID_JOGAR:
+                if (Constantes.REGRA_FACIL.equalsIgnoreCase(dificuldade)) {
+                    pontuacao += Constantes.PONTOS_FACIL;
+                } else if (Constantes.REGRA_DIFICIL.equalsIgnoreCase(dificuldade)) {
+                    pontuacao += Constantes.PONTOS_DIFICIL;
+                }
+                break;
+        }
+    }
+
+    private void addQtdErroNorma(int idNormaPalavra) {
+        switch (idNormaPalavra) {
+            case Constantes.ID_HIFEN:
+                qtdErrosHifen++;
+                break;
+            case Constantes.ID_ACENTUACAO:
+                qtdErrosAcentuacao++;
+                break;
+        }
+    }
+
+    private void mostrarPalavraCorreta(String palavraAtual) {
+        Mensagem.show(PartidaActivity.this, "O correto é: " + palavraAtual, Constantes.AVISO);
+    }
+
+    private void mostrarDica(boolean isPermitidoDica) {
+        if (isPermitidoDica) {
+            int idRegra = getPalavras().get(posicaoAtual).getIdRegra();
+            String texto = controller.getDica(idRegra);
+
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(R.string.dica);
+            alertDialog.setMessage(texto);
+            alertDialog.setIcon(R.drawable.informacao);
+            alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    voltarBackgroundNormal();
+                    prepararProximaPalavra();
+                    tocarAudio();
+                }
+            });
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            });
+            alertDialog.show();
+        }
+    }
+
+    private void alterarAnimacaoBackgroud(int borda) {
+        RelativeLayout tela = (RelativeLayout) findViewById(R.id.rlTelaPartida);
+        tela.setBackgroundResource(borda);
+
+        Animation animacaoBorda = AnimationUtils.loadAnimation(PartidaActivity.this, R.anim.efeito_alpha);
+        tela.startAnimation(animacaoBorda);
+
+    }
+
+    private void voltarBackgroundNormal(){
+        RelativeLayout tela = (RelativeLayout) findViewById(R.id.rlTelaPartida);
+        tela.setBackgroundResource(R.drawable.borda_normal);
+        Animation animacaoBorda = AnimationUtils.loadAnimation(PartidaActivity.this, R.anim.efeito_alpha_background_normal);
+        tela.startAnimation(animacaoBorda);
+    }
+
+    private void prepararProximaPalavra() {
+        etPalavraDigitada.setText("");
+        posicaoAtual++;
+        if (posicaoAtual == Constantes.QTD_PALAVRAS_PARTIDA) {
+            terminarPartida();
+        } else {
+            mediaPlayer.reset();
+            prepararAudio();
+        }
+    }
+
     private void prepararAudio() {
+        MediaPlayer mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
             String nomeArquivo = getPalavras().get(posicaoAtual).getAudio();
             Uri myUri = Uri.parse("android.resource://br.rj.cefet.joe.app/raw/" + nomeArquivo);
             mediaPlayer.setDataSource(PartidaActivity.this, myUri);
             mediaPlayer.prepare();
+            this.mediaPlayer = mediaPlayer;
 
             controller.setPalavraVisualizada(getPalavras().get(posicaoAtual).getNome());
         } catch (Exception e) {
@@ -285,7 +316,7 @@ public class PartidaActivity extends Activity {
             mediaPlayer.start();
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("tocarAudio", e.getMessage());
+//            Log.e("tocarAudio", e.getMessage());
         }
     }
 
@@ -296,6 +327,7 @@ public class PartidaActivity extends Activity {
     }
 
     private void terminarPartida() {
+        mediaPlayer.release();
         cronometro.stop();
         long elapsedMillis = SystemClock.elapsedRealtime() - cronometro.getBase();
         int duracaoEmSegundos = (int) elapsedMillis / 1000;

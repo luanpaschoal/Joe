@@ -63,7 +63,7 @@ public final class Model extends SQLiteOpenHelper {
     }
 
     public Cursor loadAll(String tabela, String[] columns) {
-        Log.d("Model", "loadAll()");
+//        Log.d("Model", "loadAll()");
 
         final Cursor c = this.database.query(tabela,
                 columns, null, null, null, null, null);
@@ -81,7 +81,7 @@ public final class Model extends SQLiteOpenHelper {
 //    }
 
     public ArrayList<Palavra> getPalavras(int idModoJogo) {
-        Log.d("Model", "getPalavras()");
+//        Log.d("Model", "getPalavras()");
         try {
 //            String tabela = Constantes.PALAVRA;
 //            String[] collumns = null;
@@ -117,7 +117,7 @@ public final class Model extends SQLiteOpenHelper {
             }
             return palavras;
         } catch (SQLiteException e) {
-            Log.e("Model.getPalavras", e.toString(), e);
+//            Log.e("Model.getPalavras", e.toString(), e);
             return null;
         }
     }
@@ -135,7 +135,7 @@ public final class Model extends SQLiteOpenHelper {
             }
             return dica;
         } catch (SQLiteException e) {
-            Log.e("Model.getDica", e.toString(), e);
+//            Log.e("Model.getDica", e.toString(), e);
             return "";
         }
     }
@@ -175,7 +175,7 @@ public final class Model extends SQLiteOpenHelper {
             }
             return dificuldade;
         } catch (SQLiteException e) {
-            Log.e("Model.getDificuldade", e.toString(), e);
+//            Log.e("Model.getDificuldade", e.toString(), e);
             return "";
         }
     }
@@ -193,7 +193,7 @@ public final class Model extends SQLiteOpenHelper {
     }
 
     public Jogo getRegistroJogo() {
-        Log.d("Model", "getRegistroJogo()");
+//        Log.d("Model", "getRegistroJogo()");
         try {
             Jogo jogo = new Jogo();
 
@@ -211,7 +211,7 @@ public final class Model extends SQLiteOpenHelper {
             }
             return jogo;
         } catch (SQLiteException e) {
-            Log.e("Model.getRegistroJogo", e.toString(), e);
+//            Log.e("Model.getRegistroJogo", e.toString(), e);
             return null;
         }
     }

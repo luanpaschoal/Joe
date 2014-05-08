@@ -12,7 +12,9 @@
     <string name="acabou_tempo">Acabou o tempo!</string>
     <string name="modo_jogo">Modo de Jogo</string>
     <string name="ouvir">Ouvir</string>
-    <string name="btProximaPalavra">Próxima Palavra</string>
+    <string name="btVerificarPalavra">Verificar Palavra</string>
     <string name="title_activity_resultado">Resultado</string>
+    <string name="dica">Dica</string>
+    <string name="proximaPalavra">Próxima Palavra</string>
 
 </resources>

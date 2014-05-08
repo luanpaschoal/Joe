@@ -6,8 +6,6 @@ package br.rj.cefet.joe.app.util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class CriaTabelas {
 
@@ -18,7 +16,7 @@ public class CriaTabelas {
     }
 
     public void onCreate() {
-        Log.w("CriandoDB", "Criando banco de dados. Versão: " + Constantes.DB_VERSION);
+//        Log.w("CriandoDB", "Criando banco de dados. Versão: " + Constantes.DB_VERSION);
 
         criaTabelaJogo();
         criaTabelaModoJogo();
@@ -32,8 +30,8 @@ public class CriaTabelas {
     public void onUpgrade(int oldVersion, int newVersion) {
         //Crude update, make sure to implement a correct one when needed.
 
-        Log.w("UpgradingDB", "Atualizando banco de dados da versão: " + oldVersion + " para a: "
-                + newVersion + ", todos os dados antigos serão excluídos.");
+//        Log.w("UpgradingDB", "Atualizando banco de dados da versão: " + oldVersion + " para a: "
+//                + newVersion + ", todos os dados antigos serão excluídos.");
         apagaTabelas();
         onCreate();
     }
@@ -55,7 +53,7 @@ public class CriaTabelas {
                     "tempoTotalTreino INTEGER, \n" +
                     "qtdAcertosTotal INTEGER);");
         } catch (Exception e) {
-            Log.w("CriaTabelas", "Não foi possível criar a tabela Jogo. Erro:" + e.getMessage());
+//            Log.w("CriaTabelas", "Não foi possível criar a tabela Jogo. Erro:" + e.getMessage());
         }
     }
 
@@ -63,7 +61,7 @@ public class CriaTabelas {
         try {
             db.execSQL("CREATE TABLE IF NOT EXISTS ModoJogo (_id INTEGER PRIMARY KEY, tipo TEXT NOT NULL);");
         } catch (Exception e) {
-            Log.w("CriaTabelas", "Não foi possível criar a tabela ModoJogo. Erro:" + e.getMessage());
+//            Log.w("CriaTabelas", "Não foi possível criar a tabela ModoJogo. Erro:" + e.getMessage());
         }
     }
 
@@ -73,7 +71,7 @@ public class CriaTabelas {
                     "titulo TEXT NOT NULL, \n" +
                     "observacao TEXT);");
         } catch (Exception e) {
-            Log.w("CriaTabelas", "Não foi possível criar a tabela Norma. Erro:" + e.getMessage());
+//            Log.w("CriaTabelas", "Não foi possível criar a tabela Norma. Erro:" + e.getMessage());
         }
     }
 
@@ -87,7 +85,7 @@ public class CriaTabelas {
                     "idNorma INTEGER,\n" +
                     "FOREIGN KEY(idNorma) REFERENCES Norma(_id));");
         } catch (Exception e) {
-            Log.w("CriaTabelas", "Não foi possível criar a tabela Regra. Erro:" + e.getMessage());
+//            Log.w("CriaTabelas", "Não foi possível criar a tabela Regra. Erro:" + e.getMessage());
         }
     }
 
@@ -98,7 +96,7 @@ public class CriaTabelas {
                     "idRegra INTEGER,\n" +
                     "FOREIGN KEY(idRegra) REFERENCES Regra(_id));");
         } catch (Exception e) {
-            Log.w("CriaTabelas", "Não foi possível criar a tabela DicaRegra. Erro:" + e.getMessage());
+//            Log.w("CriaTabelas", "Não foi possível criar a tabela DicaRegra. Erro:" + e.getMessage());
         }
     }
 
@@ -116,7 +114,7 @@ public class CriaTabelas {
                     "FOREIGN KEY(idModoJogo) REFERENCES ModoJogo(_id),\n" +
                     "FOREIGN KEY(idRegra) REFERENCES Regra(_id));");
         } catch (Exception e) {
-            Log.w("CriaTabelas", "Não foi possível criar a tabela Palavra. Erro:" + e.getMessage());
+//            Log.w("CriaTabelas", "Não foi possível criar a tabela Palavra. Erro:" + e.getMessage());
         }
     }
 }
