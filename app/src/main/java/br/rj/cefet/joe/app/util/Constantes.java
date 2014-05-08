@@ -6,7 +6,7 @@ package br.rj.cefet.joe.app.util;
 public final class Constantes {
 
     public static final String NOME_DB = "joe_db";
-    public static final int DB_VERSION = 11;
+    public static final int DB_VERSION = 12;
 
     public static final String JOGO = "Jogo";
     public static final String MODO_JOGO = "ModoJogo";
