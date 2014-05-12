@@ -16,7 +16,8 @@
         android:text="Duração da Partida:"
         android:id="@+id/textView"
         android:textColor="@android:color/black"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,9 +83,10 @@
         android:text="Acentuação:"
         android:id="@+id/textView6"
         android:textColor="@android:color/black"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="36dp"
         android:layout_below="@+id/tvDuracao"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,7 +98,8 @@
         android:layout_below="@+id/imageView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="36dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="wrap_content"

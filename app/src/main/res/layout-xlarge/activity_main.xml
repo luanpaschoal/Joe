@@ -1,4 +1,4 @@
-<RelativeLayout
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -17,9 +17,8 @@
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal|top"
         android:src="@drawable/ic_logo"
-        android:layout_weight="0.07"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="40dp"
+        android:layout_weight="0.07" />
 
     <Button
         android:layout_width="match_parent"
@@ -30,11 +29,7 @@
         android:clickable="true"
         android:textSize="@dimen/abc_action_bar_title_text_size"
         android:textStyle="bold"
-        android:layout_marginBottom="15dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="64dp" />
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:layout_width="match_parent"
@@ -44,11 +39,7 @@
         android:background="#2ae64c"
         android:clickable="true"
         android:textStyle="bold"
-        android:textSize="@dimen/abc_action_bar_title_text_size"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="92dp" />
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,10 +48,8 @@
         android:text="Total de acertos:"
         android:id="@+id/textView"
         android:layout_gravity="left"
-        android:layout_marginTop="128dp"
-        android:textColor="@android:color/black"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
+        android:layout_marginTop="50dp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,10 +58,7 @@
         android:text="0"
         android:id="@+id/tvTotalAcertos"
         android:layout_gravity="center_horizontal|left"
-        android:textColor="#ff33b5e5"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignLeft="@+id/tvPontuacao"
-        android:layout_alignStart="@+id/tvPontuacao" />
+        android:textColor="#ff33b5e5" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,11 +67,8 @@
         android:text="Pontuação:"
         android:id="@+id/textView2"
         android:layout_gravity="left"
-        android:textColor="@android:color/black"
-        android:layout_alignBaseline="@+id/tvPontuacao"
-        android:layout_alignBottom="@+id/tvPontuacao"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -94,10 +77,7 @@
         android:text="0"
         android:id="@+id/tvPontuacao"
         android:layout_gravity="left"
-        android:textColor="#ff33b5e5"
-        android:layout_below="@+id/tvTotalAcertos"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="#ff33b5e5" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -106,11 +86,8 @@
         android:text="Tempo dedicado no treino:"
         android:id="@+id/textView3"
         android:layout_gravity="left"
-        android:textColor="@android:color/black"
-        android:layout_below="@+id/tvPontuacao"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -119,9 +96,6 @@
         android:text="0"
         android:id="@+id/tvTempoTotalTreino"
         android:layout_gravity="left"
-        android:textColor="#2ae64c"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/tvPontuacao"
-        android:layout_alignStart="@+id/tvPontuacao" />
+        android:textColor="#2ae64c" />
 
-</RelativeLayout>
+</LinearLayout>

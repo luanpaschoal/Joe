@@ -39,4 +39,5 @@ public final class Constantes {
     public static final int INFORMACAO = 0;
     public static final int AVISO = 1;
     public static final int ERRO = 2;
+    public static final int ACERTO = 3;
 }

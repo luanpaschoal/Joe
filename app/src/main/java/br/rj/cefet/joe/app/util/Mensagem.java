@@ -36,11 +36,15 @@ public class Mensagem {
         switch (tipoMsg) {
             case Constantes.AVISO:
                 icone = context.getResources().getDrawable(R.drawable.aviso);
-                fundo = R.drawable.msg_fundo_amarelo;
+                fundo = R.drawable.fundo_amarelo;
                 break;
             case Constantes.ERRO:
                 icone = context.getResources().getDrawable(R.drawable.erro);
                 fundo = R.drawable.msg_fundo_vermelho;
+                break;
+            case Constantes.ACERTO:
+                icone = context.getResources().getDrawable(R.drawable.ic_action_done);
+                fundo = R.drawable.msg_fundo_verde;
                 break;
             default:
                 icone = context.getResources().getDrawable(R.drawable.informacao);
@@ -52,7 +56,7 @@ public class Mensagem {
         llRoot.setBackgroundResource(fundo);
 
         Toast toast = new Toast(context);
-        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setGravity(Gravity.TOP, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();

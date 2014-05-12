@@ -3,6 +3,7 @@ package br.rj.cefet.joe.app.view;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -145,12 +146,18 @@ public class PartidaActivity extends Activity {
                 switch (keyCode) {
                     case KeyEvent.KEYCODE_ENTER:
                         esconderTecladoVirtual();
-                        verificarPalavraDigitada();
-                        if (modoJogo == Constantes.ID_JOGAR) {
-                            prepararProximaPalavra();
-                            tocarAudio();
+                        if ("".equals(etPalavraDigitada.getText().toString())) {
+                            mostrarMsgCampoVazio();
+                            return false;
+                        } else {
+                            verificarPalavraDigitada();
+                            if (modoJogo == Constantes.ID_JOGAR) {
+                                prepararProximaPalavra();
+                                tocarAudio();
+                                abrirTecladoVirtual();
+                            }
+                            return true;
                         }
-                        return true;
                 }
             }
             return false;
@@ -166,15 +173,24 @@ public class PartidaActivity extends Activity {
     private final View.OnClickListener handleVerificaPalavraEvent = new View.OnClickListener() {
         @Override
         public void onClick(final View view) {
-//            Log.d("MainActivity.handleVerificaPalavraEvent", "botão próxima palavra acionado");
-            verificarPalavraDigitada();
+//            Log.d("MainActivity.handleVerificaPalavraEvent", "botão verifica acionado");
+            if ("".equals(etPalavraDigitada.getText().toString())) {
+                mostrarMsgCampoVazio();
+            } else {
+                verificarPalavraDigitada();
 
-            if (modoJogo == Constantes.ID_JOGAR) {
-                prepararProximaPalavra();
-                tocarAudio();
+                if (modoJogo == Constantes.ID_JOGAR) {
+                    prepararProximaPalavra();
+                    tocarAudio();
+                    abrirTecladoVirtual();
+                }
             }
         }
     };
+
+    private void mostrarMsgCampoVazio() {
+        Mensagem.show(PartidaActivity.this, "O campo está vazio. Por favor, digite a palavra.", Constantes.ERRO);
+    }
 
     private void verificarPalavraDigitada() {
         if (posicaoAtual < Constantes.QTD_PALAVRAS_PARTIDA) {
@@ -184,6 +200,7 @@ public class PartidaActivity extends Activity {
             String palavraDigitada = etPalavraDigitada.getText().toString();
 
             if (palavraDigitada.equalsIgnoreCase(palavraAtual)) {
+                mostrarMsgAcerto();
                 animarAcerto();
                 addQtdAcertoNorma(idNormaPalavra);
 
@@ -257,6 +274,10 @@ public class PartidaActivity extends Activity {
         }
     }
 
+    private void mostrarMsgAcerto() {
+        Mensagem.show(PartidaActivity.this, "Acertou!", Constantes.ACERTO);
+    }
+
     private void mostrarPalavraCorreta(String palavraAtual) {
         Mensagem.show(PartidaActivity.this, "O correto é: " + palavraAtual, Constantes.AVISO);
     }
@@ -277,6 +298,7 @@ public class PartidaActivity extends Activity {
                     voltarBackgroundTreinoNormal();
                     prepararProximaPalavra();
                     tocarAudio();
+                    abrirTecladoVirtual();
                 }
             });
             alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
@@ -345,6 +367,10 @@ public class PartidaActivity extends Activity {
             e.printStackTrace();
 //            Log.e("tocarAudio", e.getMessage());
         }
+    }
+
+    private void abrirTecladoVirtual() {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
     }
 
     private void iniciarCronometro() {

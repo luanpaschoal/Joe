@@ -19,7 +19,8 @@
         <activity
             android:name="br.rj.cefet.joe.app.view.PartidaActivity"
             android:label="@string/title_activity_partida_view"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
             android:name="br.rj.cefet.joe.app.view.ResultadoActivity"
             android:label="@string/title_activity_resultado"
